@@ -1,0 +1,15 @@
+source_file: Anymate_test.pt
+source_sha256: 2558F35DBDB66FB056B564F819286BBAEDE9F7E3C784FFEA882EA54E41C57C6D
+part_count: 3
+rebuild_command_windows: Get-Content .\datasets\anymate\Anymate_test_shards\Anymate_test.pt.part*.binpart -Encoding Byte -ReadCount 0 | Set-Content .\datasets\anymate\Anymate_test_reconstructed.pt -Encoding Byte
+
+parts:
+- name: Anymate_test.pt.part000.binpart
+  size_bytes: 1992294400
+  sha256: 8B79E893EF76E86BF3CC5E84005A2888698DE1CACC1B958ADC60E3CD8C090AE9
+- name: Anymate_test.pt.part001.binpart
+  size_bytes: 1992294400
+  sha256: A6BA52D713BC64B5B91D57ABE2B2AB27F982BCDC88CA98545529CB11E7E9B0F5
+- name: Anymate_test.pt.part002.binpart
+  size_bytes: 739412488
+  sha256: DC5117C6C04CE5CA286C7BC1C78D28EDE3F6389D8C39F832B1D60F100590BFC5
