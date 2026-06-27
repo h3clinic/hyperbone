@@ -1,0 +1,31 @@
+{
+  "model_path": "synthetic (no Blender)",
+  "animation_requested": "Walk",
+  "animation_used": "synthetic_walk",
+  "fps": 24,
+  "duration_sec": 5.0,
+  "frame_count": 120,
+  "resolution": [
+    640,
+    480
+  ],
+  "camera_location": [
+    0,
+    0,
+    0
+  ],
+  "camera_rotation": [
+    0,
+    0,
+    0
+  ],
+  "light_location": [
+    0,
+    0,
+    0
+  ],
+  "output_video": "C:\\Users\\ritayan\\HyperBone\\outputs\\synthetic\\fox_5s.mp4",
+  "frames_dir": "C:\\Users\\ritayan\\HyperBone\\outputs\\synthetic\\fox_frames",
+  "blender_available": false,
+  "render_method": "opencv_synthetic"
+}

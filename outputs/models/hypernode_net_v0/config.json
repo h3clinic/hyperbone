@@ -1,0 +1,16 @@
+{
+  "architecture": "HyperNodeNet-v0",
+  "in_channels": 1,
+  "base_channels": 32,
+  "max_nodes": 64,
+  "num_node_types": 8,
+  "num_edge_types": 8,
+  "resolution": 192,
+  "epochs": 30,
+  "batch_size": 16,
+  "lr": 0.002,
+  "train_graphs": 1844,
+  "val_graphs": 320,
+  "total_params": 6047922,
+  "device": "cuda"
+}

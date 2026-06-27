@@ -1,0 +1,62 @@
+{
+  "test": "HyperBone 3D Fox.glb Walk",
+  "source": "Fox.glb (KhronosGroup glTF-Sample-Assets)",
+  "animation": "Walk",
+  "mesh_verts": 1728,
+  "mesh_faces": 576,
+  "skeleton_joints": 24,
+  "frames_rendered": 120,
+  "fps": 24,
+  "proposals": 30,
+  "accepted": 6,
+  "rejected": 0,
+  "acceptance_rate": 1.0,
+  "pass": true,
+  "pipeline_stats": {
+    "video_path": "C:\\Users\\ritayan\\HyperBone\\output\\fox3d\\fox3d_walk.mp4",
+    "resolution": "640x480",
+    "proposal_source": "manual",
+    "text_prompt": "",
+    "frames_processed": 24,
+    "objects_proposed": 6,
+    "accepted_count": 6,
+    "rejected_count": 0,
+    "reject_reasons": [],
+    "node_counts": [
+      148,
+      125,
+      116,
+      110,
+      108,
+      151
+    ],
+    "edge_counts": [
+      237,
+      202,
+      182,
+      177,
+      167,
+      242
+    ],
+    "runtimes_ms": [
+      14.30039998376742,
+      11.034599971026182,
+      8.115099975839257,
+      12.584499956574291,
+      10.202899982687086,
+      10.33270003972575
+    ],
+    "labels_accepted": [
+      "fox",
+      "fox",
+      "fox",
+      "fox",
+      "fox",
+      "fox"
+    ],
+    "labels_rejected": [],
+    "acceptance_rate": 100.0,
+    "avg_runtime_ms": 11.1,
+    "output_dir": "output\\fox3d\\pipeline"
+  }
+}

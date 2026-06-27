@@ -1,0 +1,6 @@
+{
+  "selected_checkpoint": "checkpoint_e010",
+  "selected_threshold": 0.8,
+  "val_composite_score": 0.4132940726205647,
+  "test_composite_score": 0.1790299753260416
+}

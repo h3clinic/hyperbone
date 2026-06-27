@@ -1,0 +1,22 @@
+{
+  "mpjpe": 0.0,
+  "count_ratio": 1.0,
+  "parent_acc": 0.5356003808337941,
+  "nonroot_parent_acc": 0.5538078730864967,
+  "root_acc": 0.9546866594943515,
+  "root_precision": 0.23549103858785944,
+  "root_recall": 0.9546866594943515,
+  "root_f1": 0.32540700076125767,
+  "pred_root_ratio": 0.19874031431431388,
+  "gt_root_ratio": 0.03342298950594236,
+  "edge_precision": 0.7066738594072182,
+  "edge_recall": 0.5930233675049726,
+  "edge_f1": 0.6409526935605674,
+  "bone_ratio_all": 1.0,
+  "bone_ratio_tp": 0.9982517482517482,
+  "component_count": 9.201048951048952,
+  "cycle_rate": 0.0,
+  "average_degree": 1.6025193713713748,
+  "max_degree": 3.5646853146853146,
+  "spread": 1.0
+}

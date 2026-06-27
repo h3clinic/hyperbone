@@ -1,0 +1,6 @@
+{
+  "selected_checkpoint": "best_model",
+  "selected_threshold": 0.6,
+  "val_composite_score": 0.7007187513791069,
+  "test_composite_score": 0.4997459901752478
+}

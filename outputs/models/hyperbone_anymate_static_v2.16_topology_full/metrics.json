@@ -1,0 +1,11 @@
+{
+  "model": "HyperBoneStaticParentModel",
+  "task": "v2.15_root_free_undirected_topology",
+  "epochs": 30,
+  "batch_size": 16,
+  "lr": 0.0005,
+  "topology_scorer": "edge_mlp",
+  "degree_loss_weight": 0.0,
+  "candidate_parent_k": 12,
+  "best_val_loss": 2.121802
+}

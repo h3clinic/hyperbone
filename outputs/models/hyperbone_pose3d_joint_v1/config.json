@@ -1,0 +1,18 @@
+{
+  "model": "HyperBonePose3D-Joint",
+  "num_joints": 19,
+  "input_channels": 3,
+  "base_channels": 48,
+  "hidden_dim": 256,
+  "resolution": 192,
+  "heatmap_resolution": 48,
+  "epochs": 50,
+  "batch_size": 8,
+  "lr": 0.001,
+  "val_split": 0.2,
+  "n_train": 96,
+  "n_val": 24,
+  "parameters": 4406824,
+  "best_val_loss": 0.043227,
+  "dataset": "outputs/pose3d_joint/fox_walk/labels.jsonl"
+}

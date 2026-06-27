@@ -1,0 +1,21 @@
+{
+  "mpjpe": 0.22662373670302102,
+  "mpjpe_median": 0.14649425446987152,
+  "pck_005": 0.08864197530864197,
+  "pck_010": 0.3082716049382716,
+  "pck_020": 0.6296296296296297,
+  "reproj_error_px_mean": 14.039760687119154,
+  "reproj_error_px_median": 11.544069558309758,
+  "bone_length_error_pct": 102.65426635742188,
+  "node_precision": 2.336987882285055,
+  "node_recall": 1.0,
+  "node_f1": 1.4006570983918383,
+  "edge_precision": 0.19410783768760423,
+  "edge_recall": 0.15,
+  "edge_f1": 0.16922704143445602,
+  "n_matched": 8100,
+  "n_gt": 8100,
+  "n_pred_active": 3466,
+  "total_samples": 240,
+  "verdict": "GRAPH_MODEL_PARTIAL"
+}

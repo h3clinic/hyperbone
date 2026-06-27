@@ -1,0 +1,113 @@
+{
+  "verdict": "FRAME_MODEL_PARTIAL",
+  "train_loss_start": 1.4157084147135417,
+  "train_loss_end": 1.0780631800492604,
+  "val_mpjpe_start": 0.5067774270748421,
+  "val_mpjpe_end": 0.6400711745228008,
+  "val_mpjpe": 0.07340774204069124,
+  "val_mpjpe_median": 0.06366056203842163,
+  "pck_005": 0.3361059242912918,
+  "pck_010": 0.7822101510779155,
+  "pck_020": 0.9870989645221524,
+  "reproj_error_px_mean": 7.9038421979874505,
+  "reproj_error_px_median": 6.62705774534224,
+  "bone_length_error_pct": 19.092060089111328,
+  "visibility_accuracy": 0.9546913580246914,
+  "total_joints_evaluated": 5891,
+  "total_samples": 240,
+  "worst_5_joints": [
+    [
+      "joint_33",
+      {
+        "mpjpe": 0.10528849810361862,
+        "count": 68
+      }
+    ],
+    [
+      "joint_25",
+      {
+        "mpjpe": 0.10517587512731552,
+        "count": 150
+      }
+    ],
+    [
+      "joint_11",
+      {
+        "mpjpe": 0.10427980124950409,
+        "count": 194
+      }
+    ],
+    [
+      "joint_34",
+      {
+        "mpjpe": 0.10274997353553772,
+        "count": 103
+      }
+    ],
+    [
+      "joint_41",
+      {
+        "mpjpe": 0.09838970005512238,
+        "count": 60
+      }
+    ]
+  ],
+  "best_3_samples": [
+    {
+      "idx": 209,
+      "frame_idx": 29,
+      "clip_key": "fbx_9/60fcea30f2b2d2005375658a075d66cfe5f83119340edb3d18a48d9d49702d27_synthetic_sine",
+      "asset_id": "fbx_9/60fcea30f2b2d2005375658a075d66cfe5f83119340edb3d18a48d9d49702d27",
+      "mpjpe": 0.03697999194264412,
+      "n_joints": 18,
+      "reproj_error_px": 3.3077008489128588
+    },
+    {
+      "idx": 162,
+      "frame_idx": 12,
+      "clip_key": "fbx_9/2997b0df9206614ee41d8717daf7255b5c6cd70cec7dcf69b3c93541876e3448_synthetic_sine",
+      "asset_id": "fbx_9/2997b0df9206614ee41d8717daf7255b5c6cd70cec7dcf69b3c93541876e3448",
+      "mpjpe": 0.04022969678044319,
+      "n_joints": 31,
+      "reproj_error_px": 4.071499038445057
+    },
+    {
+      "idx": 208,
+      "frame_idx": 28,
+      "clip_key": "fbx_9/60fcea30f2b2d2005375658a075d66cfe5f83119340edb3d18a48d9d49702d27_synthetic_sine",
+      "asset_id": "fbx_9/60fcea30f2b2d2005375658a075d66cfe5f83119340edb3d18a48d9d49702d27",
+      "mpjpe": 0.0413447842001915,
+      "n_joints": 16,
+      "reproj_error_px": 4.396736138082729
+    }
+  ],
+  "worst_3_samples": [
+    {
+      "idx": 82,
+      "frame_idx": 22,
+      "clip_key": "fbx_3/f126174205e5be26fae657134b4b353bfdd2cd332f730953946adf2455708e37_synthetic_sine",
+      "asset_id": "fbx_3/f126174205e5be26fae657134b4b353bfdd2cd332f730953946adf2455708e37",
+      "mpjpe": 0.13880574703216553,
+      "n_joints": 21,
+      "reproj_error_px": 15.986819709646138
+    },
+    {
+      "idx": 81,
+      "frame_idx": 21,
+      "clip_key": "fbx_3/f126174205e5be26fae657134b4b353bfdd2cd332f730953946adf2455708e37_synthetic_sine",
+      "asset_id": "fbx_3/f126174205e5be26fae657134b4b353bfdd2cd332f730953946adf2455708e37",
+      "mpjpe": 0.14330723881721497,
+      "n_joints": 21,
+      "reproj_error_px": 15.689324484193222
+    },
+    {
+      "idx": 83,
+      "frame_idx": 23,
+      "clip_key": "fbx_3/f126174205e5be26fae657134b4b353bfdd2cd332f730953946adf2455708e37_synthetic_sine",
+      "asset_id": "fbx_3/f126174205e5be26fae657134b4b353bfdd2cd332f730953946adf2455708e37",
+      "mpjpe": 0.16997277736663818,
+      "n_joints": 21,
+      "reproj_error_px": 18.664569839743468
+    }
+  ]
+}

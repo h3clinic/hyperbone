@@ -1,0 +1,10 @@
+{
+  "asset_name": "Fox",
+  "source_repo": "https://github.com/KhronosGroup/glTF-Sample-Assets",
+  "source_url": "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Assets/main/Models/Fox/glTF-Binary/Fox.glb",
+  "local_model_path": "C:\\Users\\ritayan\\HyperBone\\assets\\gltf_samples\\Fox\\glTF-Binary\\Fox.glb",
+  "license_note": "CC0 1.0 base model, CC-BY 4.0 rigging/animation by PixelMannen",
+  "attribution_note": "Fox model from glTF-Sample-Assets by KhronosGroup. Base mesh: CC0 1.0 Universal. Rigging and animation: CC-BY 4.0 by PixelMannen (@ARebelSpy).",
+  "fetched_at": "2026-06-14T15:08:07.242935+00:00",
+  "file_size_bytes": 162852
+}

@@ -1,0 +1,16 @@
+{
+  "mpjpe": 0.40080621630161795,
+  "count_ratio": 1.0,
+  "parent_acc": 0.0,
+  "root_acc": 0.986013986013986,
+  "edge_precision": 0.0,
+  "edge_recall": 0.0,
+  "edge_f1": 0.0,
+  "bone_ratio_all": 0.0,
+  "bone_ratio_tp": 0.0,
+  "component_count": 0.0,
+  "cycle_rate": 0.0,
+  "average_degree": 0.0,
+  "max_degree": 0.0,
+  "spread": 0.0010430549732933772
+}

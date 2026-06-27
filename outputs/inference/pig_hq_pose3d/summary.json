@@ -1,0 +1,15 @@
+{
+  "video": "assets/pig/pig_hq.mp4",
+  "model": "outputs/models/hyperbone_pose3d_joint_v1/model.pt",
+  "frames_processed": 60,
+  "proposal_source": "manual",
+  "bbox_used": "600,200,260,280",
+  "stats": {
+    "accepted": 0,
+    "rejected": 60,
+    "no_bbox": 0
+  },
+  "vis_threshold": 0.3,
+  "conf_threshold": 0.3,
+  "min_joints": 5
+}

@@ -1,0 +1,11 @@
+{
+  "mpjpe_canonical": 0.065416,
+  "mpjpe_median": 0.042667,
+  "pck_005": 0.6188,
+  "pck_010": 0.8458,
+  "pck_020": 0.9406,
+  "n_samples": 120,
+  "best_train_loss": 0.004064,
+  "first_loss": 0.33066,
+  "final_loss": 0.004449
+}

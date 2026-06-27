@@ -226,8 +226,8 @@ def draw_pose_overlay(
 def get_bbox_groundingdino(frame_bgr, prompts: str, device: str) -> Optional[Tuple[float, float, float, float]]:
     """Get animal bbox using GroundingDINO."""
     try:
-        from hyperbone.objects.dino_adapter import DINOAdapter
-        adapter = DINOAdapter(device=device)
+        from hyperbone.objects.dino_adapter import DINOProposalAdapter
+        adapter = DINOProposalAdapter(device=device)
         detections = adapter.detect(frame_bgr, prompts)
         if not detections:
             return None

@@ -1,0 +1,23 @@
+{
+  "pass": false,
+  "criteria": {
+    "parent_acc_gt": 0.95,
+    "nonroot_parent_acc_gt": 0.9,
+    "edge_f1_gt": 0.9
+  },
+  "final": {
+    "step": 1000,
+    "loss": 0.9433553218841553,
+    "parent_ce": 0.849555253982544,
+    "parent_nonroot": 0.03742653504014015,
+    "parent_offset": 0.0035641842987388372,
+    "parent_root": 0.0858243852853775,
+    "parent_acc": 0.7229551451187335,
+    "nonroot_parent_acc": 0.7445652173913043,
+    "root_acc": 0.36363636363636365,
+    "edge_f1": 0.7734505457370134,
+    "pred_root_ratio": 0.013192612137203167,
+    "gt_root_ratio": 0.029023746701846966,
+    "component_count": 5.0
+  }
+}

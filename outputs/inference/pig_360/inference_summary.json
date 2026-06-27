@@ -1,0 +1,11 @@
+{
+  "video": "assets/pig/pig_360.mp4",
+  "model": "outputs/models/hyperbone3d_v0_fox_split/model.pt",
+  "frames_processed": 150,
+  "skip_frames": 60,
+  "resolution": 128,
+  "vis_threshold": 0.3,
+  "avg_visible_joints": 8.0,
+  "avg_confidence": 0.42104632596174874,
+  "overlay": "outputs\\inference\\pig_360\\overlay.mp4"
+}

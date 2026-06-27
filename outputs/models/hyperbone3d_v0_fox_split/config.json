@@ -1,0 +1,18 @@
+{
+  "model": "HyperBone3D-v0",
+  "num_joints": 19,
+  "input_channels": 5,
+  "base_channels": 32,
+  "hidden_dim": 128,
+  "resolution": 128,
+  "epochs": 30,
+  "batch_size": 8,
+  "lr": 0.001,
+  "dataset": "output/fox3d/fox3d_walk.mp4+output/fox3d/fox_armature_gt.jsonl",
+  "asset_id": "Fox.glb",
+  "parameters": 1249196,
+  "best_loss": 0.006037,
+  "val_split": 0.2,
+  "n_train": 96,
+  "n_val": 24
+}

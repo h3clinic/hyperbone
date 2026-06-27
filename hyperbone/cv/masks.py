@@ -186,12 +186,3 @@ def save_mask(mask: np.ndarray, output_dir: str, frame_idx: int, object_id: int)
     path = out / f"mask_{frame_idx:06d}_obj{object_id:03d}.png"
     cv2.imwrite(str(path), mask)
     return path
-
-
-def save_mask(mask: np.ndarray, output_dir: str, frame_idx: int, object_id: int) -> Path:
-    """Save a binary mask as PNG."""
-    out = Path(output_dir)
-    out.mkdir(parents=True, exist_ok=True)
-    path = out / f"mask_{frame_idx:06d}_obj{object_id:03d}.png"
-    cv2.imwrite(str(path), mask)
-    return path

@@ -1,0 +1,16 @@
+{
+  "total_samples": 5598,
+  "total_assets": 5598,
+  "train_samples": 4464,
+  "val_samples": 562,
+  "test_samples": 572,
+  "train_assets": 4464,
+  "val_assets": 562,
+  "test_assets": 572,
+  "train_ratio": 0.8,
+  "val_ratio": 0.1,
+  "test_ratio": 0.1,
+  "split_method": "deterministic_sha256_by_asset",
+  "source": "datasets/anymate/Anymate_test.pt",
+  "note": "LOCAL DEV SPLIT - NOT official Anymate benchmark"
+}

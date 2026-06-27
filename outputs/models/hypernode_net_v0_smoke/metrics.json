@@ -1,0 +1,58 @@
+{
+  "train_graphs": 1837,
+  "val_graphs": 327,
+  "input_modality": {
+    "real_image": 0,
+    "graph_rasterized": 2164
+  },
+  "train_loss_start": 1.5104125862536224,
+  "train_loss_end": 0.9647289711496104,
+  "val_loss_start": 1.2904472464606875,
+  "val_loss_end": 0.9187091986338297,
+  "node_f1": 0.0015324202662580213,
+  "edge_f1": 0.0,
+  "graph_chamfer": 244.1920166015625,
+  "node_type_accuracy": 0.25,
+  "invalid_graph_rate": 0.0,
+  "per_node_type_f1": {
+    "ridge": 0.006216006216006216,
+    "branch": 0.0036540803897685747,
+    "center": 0.0,
+    "articulation": 0.0,
+    "semantic_joint": 0.0,
+    "bend": 0.0,
+    "endpoint": 0.000477326968973747,
+    "root": 0.0
+  },
+  "per_source_metrics": {
+    "procedural_branch": {
+      "node_f1": 0.0013463480309660047,
+      "edge_f1": 0.0,
+      "count": 66
+    },
+    "procedural_leaf": {
+      "node_f1": 0.0014577259475218659,
+      "edge_f1": 0.0,
+      "count": 55
+    },
+    "procedural_hinge": {
+      "node_f1": 0.0,
+      "edge_f1": 0.0,
+      "count": 78
+    },
+    "procedural_rock": {
+      "node_f1": 0.004230565838180857,
+      "edge_f1": 0.0,
+      "count": 72
+    },
+    "rigged_asset": {
+      "node_f1": 0.0,
+      "edge_f1": 0.0,
+      "count": 56
+    }
+  },
+  "avg_pred_node_count": 12.37920489296636,
+  "avg_target_node_count": 19.55045871559633,
+  "total_time_seconds": 147.00974440574646,
+  "verdict": "DATASET_TOO_SYNTHETIC"
+}

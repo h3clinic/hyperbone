@@ -1,0 +1,425 @@
+{
+  "n_assets": 100,
+  "joint_count_stats": {
+    "min": 10,
+    "max": 93,
+    "mean": 50.75,
+    "median": 55.5,
+    "unique": 46
+  },
+  "bone_count_stats": {
+    "min": 7,
+    "max": 63,
+    "mean": 37.74,
+    "unique": 41
+  },
+  "topology_clusters": {
+    "n_unique_signatures": 62,
+    "top_signatures": [
+      [
+        "j69_d14_l13_b4",
+        28
+      ],
+      [
+        "j29_d10_l5_b2",
+        6
+      ],
+      [
+        "j35_d13_l5_b2",
+        3
+      ],
+      [
+        "j28_d10_l5_b2",
+        2
+      ],
+      [
+        "j25_d7_l5_b2",
+        2
+      ],
+      [
+        "j61_d14_l11_b4",
+        2
+      ],
+      [
+        "j42_d13_l7_b4",
+        2
+      ],
+      [
+        "j45_d14_l7_b4",
+        1
+      ],
+      [
+        "j44_d12_l8_b2",
+        1
+      ],
+      [
+        "j80_d14_l15_b4",
+        1
+      ]
+    ]
+  },
+  "joint_index_consistency": "INCONSISTENT \u2014 joint counts vary from 10 to 93, no shared semantics",
+  "root_joint_analysis": {
+    "always_index_0": true,
+    "multiple_roots": 7
+  },
+  "depth_stats": {
+    "min_max_depth": 3,
+    "max_max_depth": 24,
+    "mean_max_depth": 12.07
+  },
+  "can_infer_canonical": false,
+  "recommendation": "Use graph/set prediction with Hungarian matching. Joint index slots have NO shared semantics across assets.",
+  "assets_summary": [
+    {
+      "name": "000-076/3de65beaf5484d968fa8585685b586f1",
+      "joints": 45,
+      "bones": 34,
+      "sig": "j45_d14_l7_b4",
+      "depth": 14
+    },
+    {
+      "name": "fbx_9/b50ab5fd7d662e33604e23b9abbdc5241b668969c234435c0ea8d59220f643d2",
+      "joints": 44,
+      "bones": 34,
+      "sig": "j44_d12_l8_b2",
+      "depth": 12
+    },
+    {
+      "name": "fbx_9/b25a6017cce836369059e90e44a0210a5e3e23e7f5c73b0d8bf563fd20bfd736",
+      "joints": 80,
+      "bones": 61,
+      "sig": "j80_d14_l15_b4",
+      "depth": 14
+    },
+    {
+      "name": "fbx_9/3487439b6d09588b373ee673520dfd134c2f9ae02e5eeea9427bd32d377635c4",
+      "joints": 28,
+      "bones": 21,
+      "sig": "j28_d10_l5_b2",
+      "depth": 10
+    },
+    {
+      "name": "fbx_9/62a4dc90b2529dbea2b269db92cd774ae033f2fe47b102b94bce4a5cb0a28fc2",
+      "joints": 55,
+      "bones": 46,
+      "sig": "j55_d19_l7_b2",
+      "depth": 19
+    },
+    {
+      "name": "fbx_9/0d3d5be75c82fd49f07a1394998f10dce67718fc65159386bc3149c0bbc2fb2c",
+      "joints": 47,
+      "bones": 35,
+      "sig": "j47_d8_l11_b1",
+      "depth": 8
+    },
+    {
+      "name": "fbx_9/a7d68f4bd6c509b603862a81162208d735a842402ce12b0f5c7d21fb647da647",
+      "joints": 28,
+      "bones": 22,
+      "sig": "j28_d12_l4_b2",
+      "depth": 12
+    },
+    {
+      "name": "fbx_9/c8ddded42bcfcda95351535ae30c56b35d9400642bb976e65352b59dcc2ef39d",
+      "joints": 69,
+      "bones": 52,
+      "sig": "j69_d14_l13_b4",
+      "depth": 14
+    },
+    {
+      "name": "fbx_9/ecea4a1e72dc867afd21bf9354766413285013bbca2319b60c1e62a2d7ecef1b",
+      "joints": 11,
+      "bones": 8,
+      "sig": "j11_d7_l2_b1",
+      "depth": 7
+    },
+    {
+      "name": "fbx_9/bc8af321d059ae1f5fc438ecabbba05fc37f909bdd5b35b722a418ce50d86db6",
+      "joints": 21,
+      "bones": 14,
+      "sig": "j21_d10_l5_b2",
+      "depth": 10
+    },
+    {
+      "name": "fbx_9/1f0ef6624779dfc8c5dccb2994e3dd9eaeaf8912ac60493b6dc1f3491e19bee0",
+      "joints": 29,
+      "bones": 22,
+      "sig": "j29_d10_l5_b2",
+      "depth": 10
+    },
+    {
+      "name": "fbx_9/b3af98825ec270e31b1ca251087b487d16b0fbdff9325efc8222949aca089b75",
+      "joints": 68,
+      "bones": 49,
+      "sig": "j68_d17_l13_b9",
+      "depth": 17
+    },
+    {
+      "name": "fbx_9/2997b0df9206614ee41d8717daf7255b5c6cd70cec7dcf69b3c93541876e3448",
+      "joints": 35,
+      "bones": 28,
+      "sig": "j35_d13_l5_b2",
+      "depth": 13
+    },
+    {
+      "name": "fbx_9/a0d72d0a344d1a6be663eb1ed346dc3e65bbc78cf34ae4920b62729bf0d4851a",
+      "joints": 24,
+      "bones": 17,
+      "sig": "j24_d7_l5_b2",
+      "depth": 7
+    },
+    {
+      "name": "fbx_9/124d4f2dc4c084e1762f0c787c4598c20e4454bf78c2a538d263a8afc4544037",
+      "joints": 75,
+      "bones": 56,
+      "sig": "j75_d14_l14_b5",
+      "depth": 14
+    },
+    {
+      "name": "fbx_9/46f379c2d90a13193b8c5f6aca66308acc7d31dd768bb5e2b6435cb8e1bc4fb5",
+      "joints": 36,
+      "bones": 26,
+      "sig": "j36_d8_l8_b2",
+      "depth": 8
+    },
+    {
+      "name": "fbx_9/d80b7640606545c584ef983fffac8ce7212a954f7bda50d578bbdee15116d720",
+      "joints": 69,
+      "bones": 52,
+      "sig": "j69_d14_l13_b4",
+      "depth": 14
+    },
+    {
+      "name": "fbx_9/357944d0e04771cd029639cefc4644e68ba332520eb975f7c4091417f226838e",
+      "joints": 22,
+      "bones": 15,
+      "sig": "j22_d7_l5_b2",
+      "depth": 7
+    },
+    {
+      "name": "fbx_9/82cf1d5a624af021c330733f919c701fa11a00ebb2288fa972fb0fd0e407ee55",
+      "joints": 69,
+      "bones": 52,
+      "sig": "j69_d14_l13_b4",
+      "depth": 14
+    },
+    {
+      "name": "fbx_9/42bb06d740050f5df4d164857c6ae7aee9506b699df18f4e40d1ca3febca703d",
+      "joints": 69,
+      "bones": 52,
+      "sig": "j69_d14_l13_b4",
+      "depth": 14
+    },
+    {
+      "name": "fbx_9/0af067cb81d6edc9b738c2848517e239e5146be98068b27cc167243f2c598229",
+      "joints": 69,
+      "bones": 52,
+      "sig": "j69_d14_l13_b4",
+      "depth": 14
+    },
+    {
+      "name": "fbx_9/994df6a7b3b843f7ec6c25f58f2a57bf4f4821ff12cc9c00dd685b579093b2a2",
+      "joints": 69,
+      "bones": 52,
+      "sig": "j69_d14_l13_b4",
+      "depth": 14
+    },
+    {
+      "name": "fbx_9/97920ca27c2fc9e77e269dbbeedb259084b27a8136bd01dc9482911e809ac8c5",
+      "joints": 64,
+      "bones": 48,
+      "sig": "j64_d16_l11_b5",
+      "depth": 16
+    },
+    {
+      "name": "fbx_9/adfad0a55e9bd4208f8daddf380fb4d4311913c3e4490e3bdd825464234f0202",
+      "joints": 69,
+      "bones": 52,
+      "sig": "j69_d14_l13_b4",
+      "depth": 14
+    },
+    {
+      "name": "fbx_9/62060a3d2dab2aa5404aa830ee93c6c501bc0ee415a6e1a79467a8f9cb1280a1",
+      "joints": 10,
+      "bones": 7,
+      "sig": "j10_d7_l2_b1",
+      "depth": 7
+    },
+    {
+      "name": "fbx_9/b4102daeaf82ae07a076916c64a7efc045e09ef289919952d6c3ededf5267b02",
+      "joints": 69,
+      "bones": 52,
+      "sig": "j69_d14_l13_b4",
+      "depth": 14
+    },
+    {
+      "name": "fbx_9/66e68e6a662fde9630f999f301e6254ef40032cc6456332d43bd9bfac5929136",
+      "joints": 10,
+      "bones": 8,
+      "sig": "j10_d4_l2_b0",
+      "depth": 4
+    },
+    {
+      "name": "fbx_9/7f5ced2fc2c48a92d34c7a4d9a41461732aa0fff7ac2c99565828a55e462bbda",
+      "joints": 25,
+      "bones": 18,
+      "sig": "j25_d7_l5_b2",
+      "depth": 7
+    },
+    {
+      "name": "fbx_9/f9b8cdaa28ac0220a76aad0c69d94d39104ed6ea909971adfa1cfd87f9295aaa",
+      "joints": 61,
+      "bones": 46,
+      "sig": "j61_d14_l11_b4",
+      "depth": 14
+    },
+    {
+      "name": "fbx_9/96a4dbd3eedb46813a3aa7dcbdf29a6ff457670142e61696242168f74187d285",
+      "joints": 13,
+      "bones": 10,
+      "sig": "j13_d3_l4_b1",
+      "depth": 3
+    },
+    {
+      "name": "fbx_9/6ef625c9ed9af8ec9a07b052d002778f831a67a6e30057cf23113876dd816b69",
+      "joints": 41,
+      "bones": 27,
+      "sig": "j41_d13_l9_b5",
+      "depth": 13
+    },
+    {
+      "name": "fbx_9/cbc3f0ac19cca84ac6ee498524461c41224c8d38cd8f4fa7f434acf6d91eda28",
+      "joints": 69,
+      "bones": 52,
+      "sig": "j69_d14_l13_b4",
+      "depth": 14
+    },
+    {
+      "name": "fbx_9/79f458bff2649718ebdb6919a433be1195141824e2f31882d197034f1e4f92b9",
+      "joints": 69,
+      "bones": 52,
+      "sig": "j69_d14_l13_b4",
+      "depth": 14
+    },
+    {
+      "name": "fbx_9/ec85d5c71280f863e515b162c3d34e74ed7225159ade1f088ea48bdb04effc3f",
+      "joints": 69,
+      "bones": 52,
+      "sig": "j69_d14_l13_b4",
+      "depth": 14
+    },
+    {
+      "name": "fbx_9/31e00cca4c6192d8ee14a6805824c95ffe84123010dba4ec23288afe2886eeec",
+      "joints": 54,
+      "bones": 41,
+      "sig": "j54_d11_l10_b3",
+      "depth": 11
+    },
+    {
+      "name": "fbx_9/7a288c2f739a5c047ec15cb698409f87842d13cc500fb6431d2c9bb6fe2fa3e8",
+      "joints": 42,
+      "bones": 31,
+      "sig": "j42_d13_l7_b4",
+      "depth": 13
+    },
+    {
+      "name": "fbx_9/077aead041c24022b5c0237148a8b41c08a1bd55993c4b31bf35da56e2fb7877",
+      "joints": 63,
+      "bones": 48,
+      "sig": "j63_d16_l10_b5",
+      "depth": 16
+    },
+    {
+      "name": "fbx_9/7d5b714e2e5602ad22a8bbd7531728ebff035c1ed287d994319737aa8d841c19",
+      "joints": 69,
+      "bones": 52,
+      "sig": "j69_d14_l13_b4",
+      "depth": 14
+    },
+    {
+      "name": "fbx_9/3c1887ae130aeb216857161778817c54c09ef629412193c0aa294d54b80a1a59",
+      "joints": 57,
+      "bones": 36,
+      "sig": "j57_d17_l15_b8",
+      "depth": 17
+    },
+    {
+      "name": "fbx_9/4b5fbe8e24c07d030c605fab5e9f8006ced8d4af2fece50260b7d190098a43a4",
+      "joints": 27,
+      "bones": 19,
+      "sig": "j27_d10_l6_b2",
+      "depth": 10
+    },
+    {
+      "name": "fbx_9/1229eceea201558ca326f140930ecdb09c4a8a98d95f93c333a7dd1d1790afdd",
+      "joints": 28,
+      "bones": 21,
+      "sig": "j28_d10_l5_b2",
+      "depth": 10
+    },
+    {
+      "name": "fbx_9/3e5723135ddee284284da5b184ca22fd2cd6a34dbc6c9cfe231d56ed8e223259",
+      "joints": 61,
+      "bones": 46,
+      "sig": "j61_d14_l11_b4",
+      "depth": 14
+    },
+    {
+      "name": "fbx_9/17a7c5124fe8e4bb72eefb496f703e53232c1c65c31878a7acb41ebdf21d4617",
+      "joints": 75,
+      "bones": 55,
+      "sig": "j75_d15_l15_b5",
+      "depth": 15
+    },
+    {
+      "name": "fbx_9/220a64786e59c3247714db41b67fc58f350eb2cdda49cdd693df8cf9905b7c37",
+      "joints": 86,
+      "bones": 62,
+      "sig": "j86_d14_l19_b5",
+      "depth": 14
+    },
+    {
+      "name": "fbx_9/c827a46d3b50e541ee98dc2168f29869225f418665e959c3d4b092fb04ab7ff4",
+      "joints": 69,
+      "bones": 52,
+      "sig": "j69_d14_l13_b4",
+      "depth": 14
+    },
+    {
+      "name": "fbx_9/ce6712093d0594c0cbeb5e6f727f29f79f9e7670247405dde247e756760d9ad2",
+      "joints": 69,
+      "bones": 52,
+      "sig": "j69_d14_l13_b4",
+      "depth": 14
+    },
+    {
+      "name": "fbx_9/256f44d1c020bf0b28c32757d42b8a10a3ad08ae9d231a8df206ac7cc8f39607",
+      "joints": 69,
+      "bones": 54,
+      "sig": "j69_d16_l11_b4",
+      "depth": 16
+    },
+    {
+      "name": "fbx_9/f859ecd4e598c5e0fbef5e88f81aa953dea615d1655b9895eb8b11b81848f2c2",
+      "joints": 69,
+      "bones": 52,
+      "sig": "j69_d14_l13_b4",
+      "depth": 14
+    },
+    {
+      "name": "fbx_9/37eeca9d5ed6ff591d5d1dfe4667408f0649c136c18df4cb4e991410b9a68dec",
+      "joints": 78,
+      "bones": 58,
+      "sig": "j78_d15_l15_b5",
+      "depth": 15
+    },
+    {
+      "name": "fbx_9/d4e938d77c0e2b4225c1cd7e78d88dff343f8394de1320fc769d8e8ca5a9095b",
+      "joints": 27,
+      "bones": 20,
+      "sig": "j27_d11_l5_b2",
+      "depth": 11
+    }
+  ]
+}

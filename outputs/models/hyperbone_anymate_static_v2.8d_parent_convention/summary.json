@@ -1,0 +1,18 @@
+{
+  "sample_count": 40,
+  "split": "test",
+  "decode_mode": "parent_argmax_acyclic",
+  "parent_acc": 0.9996666666666666,
+  "nonroot_parent_acc": 0.9996666666666666,
+  "root_acc": 0.975,
+  "edge_precision": 1.0,
+  "edge_recall": 1.0,
+  "edge_f1": 1.0,
+  "cycle_rate": 0.0,
+  "component_count": 2.0,
+  "gt_component_count": 2.0,
+  "total_mismatches": 1,
+  "max_sample_mismatch_count": 1,
+  "padded_decoded_edges_total": 0,
+  "identity_pass": false
+}

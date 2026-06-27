@@ -1,0 +1,22 @@
+{
+  "model": "HyperBoneStaticRigModel",
+  "feat_dim": 512,
+  "max_joints": 64,
+  "pc_points": 2048,
+  "predict_skinning": true,
+  "param_count": 1395713,
+  "epochs": 30,
+  "batch_size": 8,
+  "lr": 0.001,
+  "train_samples": 4464,
+  "val_samples": 562,
+  "best_val_loss": 1.617536,
+  "best_val_mpjpe": 0.332101,
+  "final_train_loss": 1.578567,
+  "final_val_loss": 1.618674,
+  "final_train_mpjpe": 0.347928,
+  "final_val_mpjpe": 0.332535,
+  "final_edge_f1": 0.5419,
+  "dataset": "anymate_local_dev (NOT official benchmark)",
+  "split_method": "deterministic_sha256_by_asset 80/10/10"
+}

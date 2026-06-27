@@ -1,0 +1,67 @@
+{
+  "version": "labelforge_v0.5",
+  "created": "2026-06-14 18:30:12",
+  "seed": 42,
+  "total_graphs": 2566,
+  "trainable_graphs": 2164,
+  "review_graphs": 380,
+  "rejected_graphs": 22,
+  "rigged_animal_graphs": 336,
+  "total_nodes": 86360,
+  "total_edges": 127841,
+  "review_queue_count": 38332,
+  "node_types": {
+    "root": 1721,
+    "branch": 47650,
+    "bend": 3636,
+    "endpoint": 19485,
+    "articulation": 2013,
+    "center": 500,
+    "ridge": 5643,
+    "semantic_joint": 5712
+  },
+  "edge_types": {
+    "branch": 13327,
+    "vein": 13396,
+    "hinge_link": 2001,
+    "ridge": 7892,
+    "bone": 7392,
+    "medial_axis": 82125,
+    "deformation_link": 1708
+  },
+  "sources": {
+    "procedural_branch": 500,
+    "procedural_leaf": 500,
+    "procedural_hinge": 500,
+    "procedural_rock": 500,
+    "rigged_asset": 336,
+    "medial_axis": 150,
+    "motion_articulation": 80
+  },
+  "confidence_histogram": {
+    "bins": [
+      "0-0.2",
+      "0.2-0.4",
+      "0.4-0.6",
+      "0.6-0.8",
+      "0.8-1.0"
+    ],
+    "counts": [
+      0,
+      0,
+      38175,
+      9150,
+      39035
+    ]
+  },
+  "paths": {
+    "all_graphs": "graphs/all_graphs.jsonl",
+    "trainable_graphs": "graphs/trainable_graphs.jsonl",
+    "review_graphs": "graphs/review_graphs.jsonl",
+    "rejected_graphs": "graphs/rejected_graphs.jsonl",
+    "rigged_animals": "graphs/rigged_animals.jsonl",
+    "fused_graphs": "graphs/fused_graphs.jsonl",
+    "review_queue": "review_queue.jsonl",
+    "overlays": "overlays/"
+  }
+}

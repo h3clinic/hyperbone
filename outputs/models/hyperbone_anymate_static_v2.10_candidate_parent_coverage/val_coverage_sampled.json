@@ -1,0 +1,42 @@
+[
+  {
+    "k": 4,
+    "gt_parent_candidate_coverage": 0.7590832867523756,
+    "forced_inclusion_rate": 0.0,
+    "avg_candidate_count": 0.12612786091549297,
+    "avg_root_candidate_count": 0.02522557218309859,
+    "mean_parent_distance_rank": 3.7495808601379395,
+    "median_parent_distance_rank": 2.0,
+    "p90_parent_distance_rank": 7.0
+  },
+  {
+    "k": 8,
+    "gt_parent_candidate_coverage": 0.9155953046394634,
+    "forced_inclusion_rate": 0.0,
+    "avg_candidate_count": 0.2270301496478873,
+    "avg_root_candidate_count": 0.02522557218309859,
+    "mean_parent_distance_rank": 3.7490217685699463,
+    "median_parent_distance_rank": 2.0,
+    "p90_parent_distance_rank": 7.0
+  },
+  {
+    "k": 12,
+    "gt_parent_candidate_coverage": 0.9502515371716043,
+    "forced_inclusion_rate": 0.0,
+    "avg_candidate_count": 0.3279324383802817,
+    "avg_root_candidate_count": 0.02522557218309859,
+    "mean_parent_distance_rank": 3.747903823852539,
+    "median_parent_distance_rank": 2.0,
+    "p90_parent_distance_rank": 7.0
+  },
+  {
+    "k": 16,
+    "gt_parent_candidate_coverage": 0.9653437674678591,
+    "forced_inclusion_rate": 0.0,
+    "avg_candidate_count": 0.4276793573943662,
+    "avg_root_candidate_count": 0.02522557218309859,
+    "mean_parent_distance_rank": 3.7490217685699463,
+    "median_parent_distance_rank": 2.0,
+    "p90_parent_distance_rank": 7.0
+  }
+]

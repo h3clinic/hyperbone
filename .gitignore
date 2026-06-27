@@ -14,20 +14,8 @@ env/
 # Logs
 *.log
 
-# Project-generated heavy artifacts
-checkpoints/
-datasets/
-output/
-outputs/
-assets/
+# Nested repository (kept separate)
 HyperVid/
-
-# Large media/model formats
-*.fbx
-*.glb
-*.mp4
-*.mov
-*.avi
 
 # Optional local/editor state
 .DS_Store

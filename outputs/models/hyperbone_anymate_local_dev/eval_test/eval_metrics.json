@@ -1,0 +1,39 @@
+{
+  "n_samples": 572,
+  "mpjpe_mean": 0.363682,
+  "mpjpe_median": 0.35835,
+  "mpjpe_std": 0.140783,
+  "active_acc_mean": 0.8084,
+  "edge_precision": 0.5204,
+  "edge_recall": 0.564,
+  "edge_f1": 0.5413,
+  "edge_tp": 13529,
+  "edge_fp": 12470,
+  "edge_fn": 10457,
+  "bone_length_error_mean": 2.0463,
+  "bone_length_error_median": 0.7724,
+  "n_joints_mean": 44.1,
+  "n_joints_min": 8,
+  "n_joints_max": 64,
+  "mpjpe_by_complexity": {
+    "1-10": {
+      "count": 5,
+      "mean": 0.4119
+    },
+    "11-20": {
+      "count": 44,
+      "mean": 0.3905
+    },
+    "21-40": {
+      "count": 213,
+      "mean": 0.3838
+    },
+    "41-64": {
+      "count": 310,
+      "mean": 0.3453
+    }
+  },
+  "checkpoint": "outputs/models/hyperbone_anymate_local_dev/best_model.pt",
+  "split": "test",
+  "dataset": "anymate_local_dev (NOT official benchmark)"
+}

@@ -1,0 +1,10 @@
+{
+  "model": "HyperBoneStaticParentModel",
+  "backbone": "dgcnn",
+  "knn_k": 16,
+  "max_nodes": 128,
+  "epochs": 10,
+  "batch_size": 16,
+  "lr": 0.0005,
+  "best_val_loss": 1.781277
+}

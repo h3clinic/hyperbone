@@ -1,0 +1,8 @@
+{
+  "n_evaluated": 200,
+  "mpjpe_mean": 0.13275331258773804,
+  "mpjpe_median": 0.11102133989334106,
+  "spread_score_mean": 0.8718087673187256,
+  "spread_score_median": 0.899966835975647,
+  "bone_error_mean": 1.3896480798721313
+}

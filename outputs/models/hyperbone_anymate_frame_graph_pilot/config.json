@@ -1,0 +1,12 @@
+{
+  "max_nodes": 128,
+  "resolution": 256,
+  "epochs": 30,
+  "batch_size": 8,
+  "lr": 0.0005,
+  "param_count": 4110540,
+  "train_samples": 240,
+  "val_samples": 60,
+  "best_val_mpjpe": 0.2643431413752426,
+  "n_node_types": 6
+}

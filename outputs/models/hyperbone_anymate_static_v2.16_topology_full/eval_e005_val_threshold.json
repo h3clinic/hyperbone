@@ -1,0 +1,15 @@
+{
+  "edge_precision": 0.7396242675334244,
+  "edge_recall": 0.11526223006255665,
+  "edge_f1": 0.19012197900017463,
+  "threshold_edge_f1": 0.19012197900017463,
+  "top_e_edge_f1": 0.7195948358387136,
+  "candidate_coverage": 1.0,
+  "component_count": 39.580071174377224,
+  "average_degree": 0.23326829803305482,
+  "max_degree": 1.7117437722419928,
+  "cycle_count": 0.008896797153024912,
+  "bone_length_ratio": 0.7775800711743772,
+  "selected_edge_count": 6.450177935943061,
+  "gt_edge_count": 44.788256227758005
+}

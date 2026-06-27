@@ -1,0 +1,21 @@
+{
+  "mpjpe": 0.12567615224002096,
+  "chamfer": 0.1596293472867207,
+  "spread_score": 0.9770655656563773,
+  "node_f1": 0.478568221955725,
+  "node_precision": 0.5084166999033164,
+  "node_recall": 0.48486358366562865,
+  "edge_f1": 0.39846001895992234,
+  "edge_precision": 0.332989834609673,
+  "edge_recall": 0.5405752647670287,
+  "bone_ratio": 2.517318299451343,
+  "count_ratio": 1.0206717127759162,
+  "underprediction_ratio": 0.1571887581233728,
+  "overprediction_ratio": 0.17786047089928875,
+  "active_count_abs_error": 0.3350492290226615,
+  "n_pred": 39.20106761565836,
+  "n_gt": 43.56583629893238,
+  "composite_score": 0.40936728251276844,
+  "best_threshold": 0.7,
+  "checkpoint": "checkpoint_e010"
+}

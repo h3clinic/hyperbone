@@ -1,0 +1,6 @@
+{
+  "gt_file": "data/pose3d_gt.jsonl",
+  "hyperbone_file": "data/hyperbone_graph3d.jsonl",
+  "gt_source": "output\\fox3d\\fox_armature_gt.jsonl",
+  "hyperbone_source": "output/fox3d/graphs3d/hyperbone_graph3d.jsonl"
+}

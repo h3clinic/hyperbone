@@ -1,0 +1,11 @@
+{
+  "n_evaluated": 16,
+  "mpjpe_mean": 0.09332624077796936,
+  "mpjpe_median": 0.08095864206552505,
+  "spread_score_mean": 0.9551807045936584,
+  "spread_score_median": 0.9559897184371948,
+  "edge_f1_mean": 0.38929896072784975,
+  "count_ratio_mean": 0.7835797732685971,
+  "count_error_mean": 0.30392022673140295,
+  "bone_error_mean": 1.651334285736084
+}

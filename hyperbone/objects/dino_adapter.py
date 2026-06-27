@@ -135,3 +135,7 @@ class DINOProposalAdapter:
             ))
 
         return proposals
+
+
+    # Backward-compatible alias for older call sites.
+    DINOAdapter = DINOProposalAdapter

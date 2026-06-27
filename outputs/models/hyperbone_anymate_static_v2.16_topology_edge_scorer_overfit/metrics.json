@@ -1,0 +1,26 @@
+{
+  "best": {
+    "step": 310,
+    "loss": 0.5416443347930908,
+    "edge_f1_top_e": 0.9639897940071932,
+    "edge_f1_threshold": 0.923576247624423,
+    "candidate_coverage": 1.0,
+    "positive_score_mean": 3.8303921222686768,
+    "positive_score_std": 3.0589091777801514,
+    "negative_score_mean": -5.596283912658691,
+    "negative_score_std": 1.6556884050369263,
+    "hard_negative_score_mean": -2.1503334045410156,
+    "hard_negative_score_std": 1.492706060409546,
+    "overlap_rate": 0.0,
+    "best_threshold": 0.3,
+    "best_threshold_f1": 0.9550768561755485,
+    "best_threshold_selected_edge_count": 47.625,
+    "best_threshold_gt_edge_count": 49.625
+  },
+  "pass_top_e": true,
+  "pass_threshold": true,
+  "pass_best_threshold": true,
+  "pass_coverage": true,
+  "stopped_early": true,
+  "stop_reason": "Gate reached with enough signal at step ~310"
+}

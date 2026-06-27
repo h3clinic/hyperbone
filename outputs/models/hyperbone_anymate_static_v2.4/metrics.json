@@ -1,0 +1,30 @@
+{
+  "model": "HyperBoneStaticRigModel",
+  "version": "v2",
+  "loss": "RigGraphLossV2 (hungarian+chamfer+repulsion)",
+  "feat_dim": 512,
+  "max_joints": 64,
+  "pc_points": 2048,
+  "predict_skinning": true,
+  "param_count": 1395713,
+  "epochs": 60,
+  "batch_size": 8,
+  "lr": 0.0005,
+  "grad_accum": 1,
+  "loss_weights": {
+    "hungarian_pos": 2.0,
+    "chamfer": 1.0,
+    "repulsion": 0.5,
+    "edge": 0.5,
+    "bone_length": 0.8,
+    "active": 0.3,
+    "unmatched": 0.3
+  },
+  "min_repulsion_dist": 0.05,
+  "train_samples": 4464,
+  "val_samples": 562,
+  "best_val_loss": 3.106765,
+  "best_val_chamfer": 0.187625,
+  "final_val_spread": 0.6337,
+  "final_val_active_acc": 0.7702
+}

@@ -1,0 +1,629 @@
+{
+  "asset_id": "Fox.glb",
+  "joint_count": 24,
+  "bone_count": 23,
+  "joints": [
+    {
+      "id": 0,
+      "name": "_rootJoint",
+      "parent_id": null,
+      "type": "root",
+      "world_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "camera_xyz": [
+        0.0,
+        -34.6128,
+        -106.3107
+      ],
+      "image_xy": [
+        320.0,
+        428.65
+      ],
+      "visible": true
+    },
+    {
+      "id": 1,
+      "name": "b_Root_00",
+      "parent_id": 0,
+      "type": "root",
+      "world_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "camera_xyz": [
+        0.0,
+        -34.6128,
+        -106.3107
+      ],
+      "image_xy": [
+        320.0,
+        428.65
+      ],
+      "visible": true
+    },
+    {
+      "id": 2,
+      "name": "b_Hip_01",
+      "parent_id": 1,
+      "type": "hip",
+      "world_xyz": [
+        0.2232,
+        40.0512,
+        -24.5518
+      ],
+      "camera_xyz": [
+        24.5518,
+        4.9622,
+        -100.1487
+      ],
+      "image_xy": [
+        462.04,
+        211.29
+      ],
+      "visible": true
+    },
+    {
+      "id": 3,
+      "name": "b_Spine01_02",
+      "parent_id": 2,
+      "type": "spine",
+      "world_xyz": [
+        0.0501,
+        52.0625,
+        -19.9871
+      ],
+      "camera_xyz": [
+        19.9871,
+        16.8663,
+        -98.5381
+      ],
+      "image_xy": [
+        437.53,
+        140.82
+      ],
+      "visible": true
+    },
+    {
+      "id": 4,
+      "name": "b_Spine02_03",
+      "parent_id": 3,
+      "type": "spine",
+      "world_xyz": [
+        0.0639,
+        50.78,
+        1.6307
+      ],
+      "camera_xyz": [
+        -1.6307,
+        15.5959,
+        -98.7147
+      ],
+      "image_xy": [
+        310.43,
+        148.46
+      ],
+      "visible": true
+    },
+    {
+      "id": 5,
+      "name": "b_Neck_04",
+      "parent_id": 4,
+      "type": "neck",
+      "world_xyz": [
+        0.0654,
+        50.6563,
+        27.2795
+      ],
+      "camera_xyz": [
+        -27.2795,
+        15.4734,
+        -98.7316
+      ],
+      "image_xy": [
+        159.91,
+        149.19
+      ],
+      "visible": true
+    },
+    {
+      "id": 6,
+      "name": "b_Head_05",
+      "parent_id": 5,
+      "type": "head",
+      "world_xyz": [
+        0.0179,
+        58.2871,
+        38.2664
+      ],
+      "camera_xyz": [
+        -38.2664,
+        23.0268,
+        -97.6466
+      ],
+      "image_xy": [
+        92.94,
+        103.36
+      ],
+      "visible": true
+    },
+    {
+      "id": 7,
+      "name": "b_RightUpperArm_06",
+      "parent_id": 4,
+      "type": "shoulder",
+      "world_xyz": [
+        -6.8397,
+        46.2923,
+        20.2876
+      ],
+      "camera_xyz": [
+        -20.2876,
+        12.182,
+        -106.2077
+      ],
+      "image_xy": [
+        209.32,
+        173.54
+      ],
+      "visible": true
+    },
+    {
+      "id": 8,
+      "name": "b_RightForeArm_07",
+      "parent_id": 7,
+      "type": "elbow",
+      "world_xyz": [
+        -6.9058,
+        25.7946,
+        9.756
+      ],
+      "camera_xyz": [
+        -9.756,
+        -8.0792,
+        -109.3136
+      ],
+      "image_xy": [
+        268.29,
+        282.82
+      ],
+      "visible": true
+    },
+    {
+      "id": 9,
+      "name": "b_RightHand_08",
+      "parent_id": 8,
+      "type": "paw",
+      "world_xyz": [
+        -6.9611,
+        8.5956,
+        0.8882
+      ],
+      "camera_xyz": [
+        -0.8882,
+        -25.0797,
+        -111.9196
+      ],
+      "image_xy": [
+        315.4,
+        369.84
+      ],
+      "visible": true
+    },
+    {
+      "id": 10,
+      "name": "b_LeftUpperArm_09",
+      "parent_id": 4,
+      "type": "shoulder",
+      "world_xyz": [
+        7.0944,
+        46.4938,
+        20.2877
+      ],
+      "camera_xyz": [
+        -20.2877,
+        10.3142,
+        -92.3978
+      ],
+      "image_xy": [
+        192.78,
+        175.32
+      ],
+      "visible": true
+    },
+    {
+      "id": 11,
+      "name": "b_LeftForeArm_010",
+      "parent_id": 10,
+      "type": "elbow",
+      "world_xyz": [
+        7.024,
+        26.6717,
+        32.0417
+      ],
+      "camera_xyz": [
+        -32.0417,
+        -9.2781,
+        -95.4079
+      ],
+      "image_xy": [
+        125.41,
+        296.35
+      ],
+      "visible": true
+    },
+    {
+      "id": 12,
+      "name": "b_LeftHand_011",
+      "parent_id": 11,
+      "type": "paw",
+      "world_xyz": [
+        6.9649,
+        9.9972,
+        41.8603
+      ],
+      "camera_xyz": [
+        -41.8603,
+        -25.7593,
+        -97.9398
+      ],
+      "image_xy": [
+        72.35,
+        392.39
+      ],
+      "visible": true
+    },
+    {
+      "id": 13,
+      "name": "b_Tail01_012",
+      "parent_id": 2,
+      "type": "tail",
+      "world_xyz": [
+        0.0841,
+        49.7015,
+        -37.9565
+      ],
+      "camera_xyz": [
+        37.9565,
+        14.5264,
+        -98.8547
+      ],
+      "image_xy": [
+        542.47,
+        154.86
+      ],
+      "visible": true
+    },
+    {
+      "id": 14,
+      "name": "b_Tail02_013",
+      "parent_id": 13,
+      "type": "tail",
+      "world_xyz": [
+        0.1404,
+        45.7951,
+        -49.7375
+      ],
+      "camera_xyz": [
+        49.7375,
+        10.6549,
+        -99.3785
+      ],
+      "image_xy": [
+        609.99,
+        177.88
+      ],
+      "visible": true
+    },
+    {
+      "id": 15,
+      "name": "b_Tail03_014",
+      "parent_id": 14,
+      "type": "tail",
+      "world_xyz": [
+        0.1502,
+        45.1168,
+        -73.9683
+      ],
+      "camera_xyz": [
+        73.9683,
+        9.9826,
+        -99.4695
+      ],
+      "image_xy": [
+        750.87,
+        181.85
+      ],
+      "visible": true
+    },
+    {
+      "id": 16,
+      "name": "b_LeftLeg01_015",
+      "parent_id": 2,
+      "type": "unknown",
+      "world_xyz": [
+        7.0993,
+        46.4816,
+        -27.6598
+      ],
+      "camera_xyz": [
+        27.6598,
+        10.3014,
+        -92.3948
+      ],
+      "image_xy": [
+        493.46,
+        175.4
+      ],
+      "visible": true
+    },
+    {
+      "id": 17,
+      "name": "b_LeftLeg02_016",
+      "parent_id": 16,
+      "type": "unknown",
+      "world_xyz": [
+        7.0347,
+        28.1294,
+        -32.3583
+      ],
+      "camera_xyz": [
+        32.3583,
+        -7.8381,
+        -95.181
+      ],
+      "image_xy": [
+        516.98,
+        287.71
+      ],
+      "visible": true
+    },
+    {
+      "id": 18,
+      "name": "b_LeftFoot01_017",
+      "parent_id": 17,
+      "type": "ankle",
+      "world_xyz": [
+        6.968,
+        16.3861,
+        -45.9242
+      ],
+      "camera_xyz": [
+        45.9242,
+        -19.4416,
+        -96.989
+      ],
+      "image_xy": [
+        594.35,
+        356.14
+      ],
+      "visible": true
+    },
+    {
+      "id": 19,
+      "name": "b_LeftFoot02_018",
+      "parent_id": 18,
+      "type": "ankle",
+      "world_xyz": [
+        6.9679,
+        1.1903,
+        -41.6705
+      ],
+      "camera_xyz": [
+        41.6705,
+        -34.4693,
+        -99.2432
+      ],
+      "image_xy": [
+        563.28,
+        441.24
+      ],
+      "visible": true
+    },
+    {
+      "id": 20,
+      "name": "b_RightLeg01_019",
+      "parent_id": 2,
+      "type": "unknown",
+      "world_xyz": [
+        -6.8349,
+        46.2808,
+        -27.6598
+      ],
+      "camera_xyz": [
+        27.6598,
+        12.1699,
+        -106.2046
+      ],
+      "image_xy": [
+        470.9,
+        173.61
+      ],
+      "visible": true
+    },
+    {
+      "id": 21,
+      "name": "b_RightLeg02_020",
+      "parent_id": 20,
+      "type": "unknown",
+      "world_xyz": [
+        -6.8381,
+        33.6963,
+        -13.4996
+      ],
+      "camera_xyz": [
+        13.4996,
+        -0.2749,
+        -108.0746
+      ],
+      "image_xy": [
+        392.37,
+        241.47
+      ],
+      "visible": true
+    },
+    {
+      "id": 22,
+      "name": "b_RightFoot01_021",
+      "parent_id": 21,
+      "type": "ankle",
+      "world_xyz": [
+        -6.9669,
+        17.1094,
+        -20.3408
+      ],
+      "camera_xyz": [
+        20.3408,
+        -16.6592,
+        -110.6625
+      ],
+      "image_xy": [
+        426.5,
+        327.22
+      ],
+      "visible": true
+    },
+    {
+      "id": 23,
+      "name": "b_RightFoot02_022",
+      "parent_id": 22,
+      "type": "ankle",
+      "world_xyz": [
+        -6.9676,
+        2.0031,
+        -15.7796
+      ],
+      "camera_xyz": [
+        15.7796,
+        -31.5983,
+        -112.9041
+      ],
+      "image_xy": [
+        400.98,
+        402.16
+      ],
+      "visible": true
+    }
+  ],
+  "bones": [
+    {
+      "parent_id": 0,
+      "child_id": 1,
+      "name": "_rootJoint_to_b_Root_00"
+    },
+    {
+      "parent_id": 1,
+      "child_id": 2,
+      "name": "b_Root_00_to_b_Hip_01"
+    },
+    {
+      "parent_id": 2,
+      "child_id": 3,
+      "name": "b_Hip_01_to_b_Spine01_02"
+    },
+    {
+      "parent_id": 3,
+      "child_id": 4,
+      "name": "b_Spine01_02_to_b_Spine02_03"
+    },
+    {
+      "parent_id": 4,
+      "child_id": 5,
+      "name": "b_Spine02_03_to_b_Neck_04"
+    },
+    {
+      "parent_id": 5,
+      "child_id": 6,
+      "name": "b_Neck_04_to_b_Head_05"
+    },
+    {
+      "parent_id": 4,
+      "child_id": 7,
+      "name": "b_Spine02_03_to_b_RightUpperArm_06"
+    },
+    {
+      "parent_id": 7,
+      "child_id": 8,
+      "name": "b_RightUpperArm_06_to_b_RightForeArm_07"
+    },
+    {
+      "parent_id": 8,
+      "child_id": 9,
+      "name": "b_RightForeArm_07_to_b_RightHand_08"
+    },
+    {
+      "parent_id": 4,
+      "child_id": 10,
+      "name": "b_Spine02_03_to_b_LeftUpperArm_09"
+    },
+    {
+      "parent_id": 10,
+      "child_id": 11,
+      "name": "b_LeftUpperArm_09_to_b_LeftForeArm_010"
+    },
+    {
+      "parent_id": 11,
+      "child_id": 12,
+      "name": "b_LeftForeArm_010_to_b_LeftHand_011"
+    },
+    {
+      "parent_id": 2,
+      "child_id": 13,
+      "name": "b_Hip_01_to_b_Tail01_012"
+    },
+    {
+      "parent_id": 13,
+      "child_id": 14,
+      "name": "b_Tail01_012_to_b_Tail02_013"
+    },
+    {
+      "parent_id": 14,
+      "child_id": 15,
+      "name": "b_Tail02_013_to_b_Tail03_014"
+    },
+    {
+      "parent_id": 2,
+      "child_id": 16,
+      "name": "b_Hip_01_to_b_LeftLeg01_015"
+    },
+    {
+      "parent_id": 16,
+      "child_id": 17,
+      "name": "b_LeftLeg01_015_to_b_LeftLeg02_016"
+    },
+    {
+      "parent_id": 17,
+      "child_id": 18,
+      "name": "b_LeftLeg02_016_to_b_LeftFoot01_017"
+    },
+    {
+      "parent_id": 18,
+      "child_id": 19,
+      "name": "b_LeftFoot01_017_to_b_LeftFoot02_018"
+    },
+    {
+      "parent_id": 2,
+      "child_id": 20,
+      "name": "b_Hip_01_to_b_RightLeg01_019"
+    },
+    {
+      "parent_id": 20,
+      "child_id": 21,
+      "name": "b_RightLeg01_019_to_b_RightLeg02_020"
+    },
+    {
+      "parent_id": 21,
+      "child_id": 22,
+      "name": "b_RightLeg02_020_to_b_RightFoot01_021"
+    },
+    {
+      "parent_id": 22,
+      "child_id": 23,
+      "name": "b_RightFoot01_021_to_b_RightFoot02_022"
+    }
+  ],
+  "animation": "Walk"
+}

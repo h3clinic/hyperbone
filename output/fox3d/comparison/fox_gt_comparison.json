@@ -1,0 +1,77 @@
+{
+  "gt_path": "output/fox3d/fox_armature_gt.jsonl",
+  "hyperbone_path": "output/fox3d/pipeline/graphs/graphs.jsonl",
+  "frames_compared": 6,
+  "gt_frames_total": 120,
+  "hb_frames_total": 6,
+  "avg_gt_joints": 24.0,
+  "avg_hb_nodes": 126.3,
+  "avg_centroid_distance_px": 64.88,
+  "avg_bbox_iou": 0.6693,
+  "avg_nn_distance_px": 68.97,
+  "p95_nn_distance_px": 116.65,
+  "avg_coverage_40px": 0.2708,
+  "topology_note": "HyperBone graph is a structural 2D contour skeleton extracted via thinning. GT is a semantic internal armature from Blender. These are fundamentally different representations \u2014 HyperBone traces silhouette edges while GT describes internal joint locations.",
+  "per_frame": [
+    {
+      "frame_idx": 0,
+      "gt_joints": 24,
+      "hb_nodes": 148,
+      "centroid_distance_px": 73.07,
+      "bbox_iou": 0.7235,
+      "nn_mean_px": 68.47,
+      "nn_p95_px": 141.97,
+      "coverage_40px": 0.375
+    },
+    {
+      "frame_idx": 20,
+      "gt_joints": 24,
+      "hb_nodes": 125,
+      "centroid_distance_px": 73.06,
+      "bbox_iou": 0.6561,
+      "nn_mean_px": 76.08,
+      "nn_p95_px": 123.2,
+      "coverage_40px": 0.1667
+    },
+    {
+      "frame_idx": 40,
+      "gt_joints": 24,
+      "hb_nodes": 116,
+      "centroid_distance_px": 29.66,
+      "bbox_iou": 0.6678,
+      "nn_mean_px": 64.93,
+      "nn_p95_px": 111.86,
+      "coverage_40px": 0.3333
+    },
+    {
+      "frame_idx": 60,
+      "gt_joints": 24,
+      "hb_nodes": 110,
+      "centroid_distance_px": 90.05,
+      "bbox_iou": 0.6562,
+      "nn_mean_px": 70.57,
+      "nn_p95_px": 113.98,
+      "coverage_40px": 0.2083
+    },
+    {
+      "frame_idx": 80,
+      "gt_joints": 24,
+      "hb_nodes": 108,
+      "centroid_distance_px": 42.48,
+      "bbox_iou": 0.6371,
+      "nn_mean_px": 65.94,
+      "nn_p95_px": 98.11,
+      "coverage_40px": 0.25
+    },
+    {
+      "frame_idx": 100,
+      "gt_joints": 24,
+      "hb_nodes": 151,
+      "centroid_distance_px": 80.96,
+      "bbox_iou": 0.6752,
+      "nn_mean_px": 67.85,
+      "nn_p95_px": 110.79,
+      "coverage_40px": 0.2917
+    }
+  ]
+}

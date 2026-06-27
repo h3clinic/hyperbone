@@ -1,0 +1,18 @@
+{
+  "mpjpe_train": 0.071091,
+  "mpjpe_train_median": 0.042496,
+  "pck_005_train": 0.5651,
+  "pck_010_train": 0.819,
+  "pck_020_train": 0.931,
+  "n_train_samples": 96,
+  "best_train_loss": 0.006037,
+  "first_loss": 0.409002,
+  "final_loss": 0.006129,
+  "mpjpe_val": 0.068332,
+  "mpjpe_val_median": 0.042609,
+  "pck_005_val": 0.5625,
+  "pck_010_val": 0.8333,
+  "pck_020_val": 0.9427,
+  "n_val_samples": 24,
+  "val_loss_final": 0.006941
+}

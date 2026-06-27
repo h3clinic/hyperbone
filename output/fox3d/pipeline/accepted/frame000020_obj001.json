@@ -1,0 +1,2537 @@
+{
+  "frame_idx": 20,
+  "timestamp_sec": 0.833,
+  "object_id": 1,
+  "object_label": "fox",
+  "object_label_source": "manual",
+  "object_label_confidence": 1.0,
+  "bbox_xywh": [
+    0,
+    0,
+    640,
+    480
+  ],
+  "skeleton_mapper": "hyperbone-custom",
+  "mask_backend": "hyperbone-custom-mask",
+  "thinning_algorithm": "zhang-suen",
+  "graph_builder": "hyperbone-pixel-trace-v0",
+  "node_count": 125,
+  "edge_count": 202,
+  "nodes": [
+    {
+      "id": 0,
+      "type": "junction",
+      "xy": [
+        25,
+        20
+      ],
+      "crop_xy": [
+        5,
+        4
+      ]
+    },
+    {
+      "id": 1,
+      "type": "junction",
+      "xy": [
+        20,
+        25
+      ],
+      "crop_xy": [
+        4,
+        5
+      ]
+    },
+    {
+      "id": 2,
+      "type": "junction",
+      "xy": [
+        175,
+        30
+      ],
+      "crop_xy": [
+        35,
+        6
+      ]
+    },
+    {
+      "id": 3,
+      "type": "junction",
+      "xy": [
+        180,
+        35
+      ],
+      "crop_xy": [
+        36,
+        7
+      ]
+    },
+    {
+      "id": 4,
+      "type": "junction",
+      "xy": [
+        215,
+        60
+      ],
+      "crop_xy": [
+        43,
+        12
+      ]
+    },
+    {
+      "id": 5,
+      "type": "junction",
+      "xy": [
+        220,
+        60
+      ],
+      "crop_xy": [
+        44,
+        12
+      ]
+    },
+    {
+      "id": 6,
+      "type": "junction",
+      "xy": [
+        220,
+        65
+      ],
+      "crop_xy": [
+        44,
+        13
+      ]
+    },
+    {
+      "id": 7,
+      "type": "junction",
+      "xy": [
+        225,
+        65
+      ],
+      "crop_xy": [
+        45,
+        13
+      ]
+    },
+    {
+      "id": 8,
+      "type": "junction",
+      "xy": [
+        515,
+        80
+      ],
+      "crop_xy": [
+        103,
+        16
+      ]
+    },
+    {
+      "id": 9,
+      "type": "junction",
+      "xy": [
+        520,
+        80
+      ],
+      "crop_xy": [
+        104,
+        16
+      ]
+    },
+    {
+      "id": 10,
+      "type": "junction",
+      "xy": [
+        520,
+        85
+      ],
+      "crop_xy": [
+        104,
+        17
+      ]
+    },
+    {
+      "id": 11,
+      "type": "junction",
+      "xy": [
+        525,
+        85
+      ],
+      "crop_xy": [
+        105,
+        17
+      ]
+    },
+    {
+      "id": 12,
+      "type": "junction",
+      "xy": [
+        530,
+        85
+      ],
+      "crop_xy": [
+        106,
+        17
+      ]
+    },
+    {
+      "id": 13,
+      "type": "junction",
+      "xy": [
+        530,
+        90
+      ],
+      "crop_xy": [
+        106,
+        18
+      ]
+    },
+    {
+      "id": 14,
+      "type": "junction",
+      "xy": [
+        535,
+        90
+      ],
+      "crop_xy": [
+        107,
+        18
+      ]
+    },
+    {
+      "id": 15,
+      "type": "junction",
+      "xy": [
+        540,
+        90
+      ],
+      "crop_xy": [
+        108,
+        18
+      ]
+    },
+    {
+      "id": 16,
+      "type": "junction",
+      "xy": [
+        540,
+        95
+      ],
+      "crop_xy": [
+        108,
+        19
+      ]
+    },
+    {
+      "id": 17,
+      "type": "junction",
+      "xy": [
+        545,
+        95
+      ],
+      "crop_xy": [
+        109,
+        19
+      ]
+    },
+    {
+      "id": 18,
+      "type": "junction",
+      "xy": [
+        545,
+        100
+      ],
+      "crop_xy": [
+        109,
+        20
+      ]
+    },
+    {
+      "id": 19,
+      "type": "junction",
+      "xy": [
+        550,
+        100
+      ],
+      "crop_xy": [
+        110,
+        20
+      ]
+    },
+    {
+      "id": 20,
+      "type": "junction",
+      "xy": [
+        560,
+        110
+      ],
+      "crop_xy": [
+        112,
+        22
+      ]
+    },
+    {
+      "id": 21,
+      "type": "junction",
+      "xy": [
+        565,
+        110
+      ],
+      "crop_xy": [
+        113,
+        22
+      ]
+    },
+    {
+      "id": 22,
+      "type": "junction",
+      "xy": [
+        565,
+        115
+      ],
+      "crop_xy": [
+        113,
+        23
+      ]
+    },
+    {
+      "id": 23,
+      "type": "junction",
+      "xy": [
+        570,
+        115
+      ],
+      "crop_xy": [
+        114,
+        23
+      ]
+    },
+    {
+      "id": 24,
+      "type": "junction",
+      "xy": [
+        565,
+        120
+      ],
+      "crop_xy": [
+        113,
+        24
+      ]
+    },
+    {
+      "id": 25,
+      "type": "junction",
+      "xy": [
+        555,
+        170
+      ],
+      "crop_xy": [
+        111,
+        34
+      ]
+    },
+    {
+      "id": 26,
+      "type": "junction",
+      "xy": [
+        555,
+        175
+      ],
+      "crop_xy": [
+        111,
+        35
+      ]
+    },
+    {
+      "id": 27,
+      "type": "junction",
+      "xy": [
+        560,
+        175
+      ],
+      "crop_xy": [
+        112,
+        35
+      ]
+    },
+    {
+      "id": 28,
+      "type": "junction",
+      "xy": [
+        560,
+        180
+      ],
+      "crop_xy": [
+        112,
+        36
+      ]
+    },
+    {
+      "id": 29,
+      "type": "junction",
+      "xy": [
+        40,
+        190
+      ],
+      "crop_xy": [
+        8,
+        38
+      ]
+    },
+    {
+      "id": 30,
+      "type": "junction",
+      "xy": [
+        45,
+        190
+      ],
+      "crop_xy": [
+        9,
+        38
+      ]
+    },
+    {
+      "id": 31,
+      "type": "junction",
+      "xy": [
+        45,
+        195
+      ],
+      "crop_xy": [
+        9,
+        39
+      ]
+    },
+    {
+      "id": 32,
+      "type": "junction",
+      "xy": [
+        50,
+        195
+      ],
+      "crop_xy": [
+        10,
+        39
+      ]
+    },
+    {
+      "id": 33,
+      "type": "junction",
+      "xy": [
+        55,
+        195
+      ],
+      "crop_xy": [
+        11,
+        39
+      ]
+    },
+    {
+      "id": 34,
+      "type": "junction",
+      "xy": [
+        55,
+        200
+      ],
+      "crop_xy": [
+        11,
+        40
+      ]
+    },
+    {
+      "id": 35,
+      "type": "junction",
+      "xy": [
+        60,
+        200
+      ],
+      "crop_xy": [
+        12,
+        40
+      ]
+    },
+    {
+      "id": 36,
+      "type": "junction",
+      "xy": [
+        60,
+        205
+      ],
+      "crop_xy": [
+        12,
+        41
+      ]
+    },
+    {
+      "id": 37,
+      "type": "junction",
+      "xy": [
+        65,
+        205
+      ],
+      "crop_xy": [
+        13,
+        41
+      ]
+    },
+    {
+      "id": 38,
+      "type": "junction",
+      "xy": [
+        70,
+        205
+      ],
+      "crop_xy": [
+        14,
+        41
+      ]
+    },
+    {
+      "id": 39,
+      "type": "junction",
+      "xy": [
+        70,
+        210
+      ],
+      "crop_xy": [
+        14,
+        42
+      ]
+    },
+    {
+      "id": 40,
+      "type": "junction",
+      "xy": [
+        75,
+        210
+      ],
+      "crop_xy": [
+        15,
+        42
+      ]
+    },
+    {
+      "id": 41,
+      "type": "junction",
+      "xy": [
+        75,
+        215
+      ],
+      "crop_xy": [
+        15,
+        43
+      ]
+    },
+    {
+      "id": 42,
+      "type": "junction",
+      "xy": [
+        80,
+        215
+      ],
+      "crop_xy": [
+        16,
+        43
+      ]
+    },
+    {
+      "id": 43,
+      "type": "junction",
+      "xy": [
+        85,
+        220
+      ],
+      "crop_xy": [
+        17,
+        44
+      ]
+    },
+    {
+      "id": 44,
+      "type": "junction",
+      "xy": [
+        90,
+        220
+      ],
+      "crop_xy": [
+        18,
+        44
+      ]
+    },
+    {
+      "id": 45,
+      "type": "junction",
+      "xy": [
+        90,
+        225
+      ],
+      "crop_xy": [
+        18,
+        45
+      ]
+    },
+    {
+      "id": 46,
+      "type": "junction",
+      "xy": [
+        95,
+        225
+      ],
+      "crop_xy": [
+        19,
+        45
+      ]
+    },
+    {
+      "id": 47,
+      "type": "junction",
+      "xy": [
+        570,
+        225
+      ],
+      "crop_xy": [
+        114,
+        45
+      ]
+    },
+    {
+      "id": 48,
+      "type": "junction",
+      "xy": [
+        95,
+        230
+      ],
+      "crop_xy": [
+        19,
+        46
+      ]
+    },
+    {
+      "id": 49,
+      "type": "junction",
+      "xy": [
+        100,
+        230
+      ],
+      "crop_xy": [
+        20,
+        46
+      ]
+    },
+    {
+      "id": 50,
+      "type": "junction",
+      "xy": [
+        575,
+        230
+      ],
+      "crop_xy": [
+        115,
+        46
+      ]
+    },
+    {
+      "id": 51,
+      "type": "junction",
+      "xy": [
+        100,
+        235
+      ],
+      "crop_xy": [
+        20,
+        47
+      ]
+    },
+    {
+      "id": 52,
+      "type": "junction",
+      "xy": [
+        105,
+        235
+      ],
+      "crop_xy": [
+        21,
+        47
+      ]
+    },
+    {
+      "id": 53,
+      "type": "junction",
+      "xy": [
+        105,
+        240
+      ],
+      "crop_xy": [
+        21,
+        48
+      ]
+    },
+    {
+      "id": 54,
+      "type": "junction",
+      "xy": [
+        110,
+        240
+      ],
+      "crop_xy": [
+        22,
+        48
+      ]
+    },
+    {
+      "id": 55,
+      "type": "junction",
+      "xy": [
+        115,
+        240
+      ],
+      "crop_xy": [
+        23,
+        48
+      ]
+    },
+    {
+      "id": 56,
+      "type": "junction",
+      "xy": [
+        585,
+        240
+      ],
+      "crop_xy": [
+        117,
+        48
+      ]
+    },
+    {
+      "id": 57,
+      "type": "junction",
+      "xy": [
+        115,
+        245
+      ],
+      "crop_xy": [
+        23,
+        49
+      ]
+    },
+    {
+      "id": 58,
+      "type": "junction",
+      "xy": [
+        120,
+        245
+      ],
+      "crop_xy": [
+        24,
+        49
+      ]
+    },
+    {
+      "id": 59,
+      "type": "junction",
+      "xy": [
+        585,
+        245
+      ],
+      "crop_xy": [
+        117,
+        49
+      ]
+    },
+    {
+      "id": 60,
+      "type": "junction",
+      "xy": [
+        590,
+        245
+      ],
+      "crop_xy": [
+        118,
+        49
+      ]
+    },
+    {
+      "id": 61,
+      "type": "junction",
+      "xy": [
+        120,
+        250
+      ],
+      "crop_xy": [
+        24,
+        50
+      ]
+    },
+    {
+      "id": 62,
+      "type": "junction",
+      "xy": [
+        125,
+        250
+      ],
+      "crop_xy": [
+        25,
+        50
+      ]
+    },
+    {
+      "id": 63,
+      "type": "junction",
+      "xy": [
+        590,
+        250
+      ],
+      "crop_xy": [
+        118,
+        50
+      ]
+    },
+    {
+      "id": 64,
+      "type": "junction",
+      "xy": [
+        595,
+        250
+      ],
+      "crop_xy": [
+        119,
+        50
+      ]
+    },
+    {
+      "id": 65,
+      "type": "junction",
+      "xy": [
+        125,
+        255
+      ],
+      "crop_xy": [
+        25,
+        51
+      ]
+    },
+    {
+      "id": 66,
+      "type": "junction",
+      "xy": [
+        130,
+        255
+      ],
+      "crop_xy": [
+        26,
+        51
+      ]
+    },
+    {
+      "id": 67,
+      "type": "junction",
+      "xy": [
+        130,
+        260
+      ],
+      "crop_xy": [
+        26,
+        52
+      ]
+    },
+    {
+      "id": 68,
+      "type": "junction",
+      "xy": [
+        135,
+        260
+      ],
+      "crop_xy": [
+        27,
+        52
+      ]
+    },
+    {
+      "id": 69,
+      "type": "junction",
+      "xy": [
+        135,
+        265
+      ],
+      "crop_xy": [
+        27,
+        53
+      ]
+    },
+    {
+      "id": 70,
+      "type": "junction",
+      "xy": [
+        140,
+        265
+      ],
+      "crop_xy": [
+        28,
+        53
+      ]
+    },
+    {
+      "id": 71,
+      "type": "junction",
+      "xy": [
+        140,
+        270
+      ],
+      "crop_xy": [
+        28,
+        54
+      ]
+    },
+    {
+      "id": 72,
+      "type": "junction",
+      "xy": [
+        145,
+        275
+      ],
+      "crop_xy": [
+        29,
+        55
+      ]
+    },
+    {
+      "id": 73,
+      "type": "junction",
+      "xy": [
+        145,
+        280
+      ],
+      "crop_xy": [
+        29,
+        56
+      ]
+    },
+    {
+      "id": 74,
+      "type": "junction",
+      "xy": [
+        150,
+        280
+      ],
+      "crop_xy": [
+        30,
+        56
+      ]
+    },
+    {
+      "id": 75,
+      "type": "junction",
+      "xy": [
+        150,
+        285
+      ],
+      "crop_xy": [
+        30,
+        57
+      ]
+    },
+    {
+      "id": 76,
+      "type": "junction",
+      "xy": [
+        300,
+        325
+      ],
+      "crop_xy": [
+        60,
+        65
+      ]
+    },
+    {
+      "id": 77,
+      "type": "junction",
+      "xy": [
+        305,
+        325
+      ],
+      "crop_xy": [
+        61,
+        65
+      ]
+    },
+    {
+      "id": 78,
+      "type": "junction",
+      "xy": [
+        290,
+        330
+      ],
+      "crop_xy": [
+        58,
+        66
+      ]
+    },
+    {
+      "id": 79,
+      "type": "junction",
+      "xy": [
+        295,
+        330
+      ],
+      "crop_xy": [
+        59,
+        66
+      ]
+    },
+    {
+      "id": 80,
+      "type": "junction",
+      "xy": [
+        300,
+        330
+      ],
+      "crop_xy": [
+        60,
+        66
+      ]
+    },
+    {
+      "id": 81,
+      "type": "junction",
+      "xy": [
+        540,
+        330
+      ],
+      "crop_xy": [
+        108,
+        66
+      ]
+    },
+    {
+      "id": 82,
+      "type": "junction",
+      "xy": [
+        545,
+        330
+      ],
+      "crop_xy": [
+        109,
+        66
+      ]
+    },
+    {
+      "id": 83,
+      "type": "junction",
+      "xy": [
+        285,
+        335
+      ],
+      "crop_xy": [
+        57,
+        67
+      ]
+    },
+    {
+      "id": 84,
+      "type": "junction",
+      "xy": [
+        290,
+        335
+      ],
+      "crop_xy": [
+        58,
+        67
+      ]
+    },
+    {
+      "id": 85,
+      "type": "junction",
+      "xy": [
+        545,
+        335
+      ],
+      "crop_xy": [
+        109,
+        67
+      ]
+    },
+    {
+      "id": 86,
+      "type": "junction",
+      "xy": [
+        550,
+        335
+      ],
+      "crop_xy": [
+        110,
+        67
+      ]
+    },
+    {
+      "id": 87,
+      "type": "junction",
+      "xy": [
+        555,
+        335
+      ],
+      "crop_xy": [
+        111,
+        67
+      ]
+    },
+    {
+      "id": 88,
+      "type": "junction",
+      "xy": [
+        280,
+        340
+      ],
+      "crop_xy": [
+        56,
+        68
+      ]
+    },
+    {
+      "id": 89,
+      "type": "junction",
+      "xy": [
+        285,
+        340
+      ],
+      "crop_xy": [
+        57,
+        68
+      ]
+    },
+    {
+      "id": 90,
+      "type": "junction",
+      "xy": [
+        555,
+        340
+      ],
+      "crop_xy": [
+        111,
+        68
+      ]
+    },
+    {
+      "id": 91,
+      "type": "junction",
+      "xy": [
+        560,
+        340
+      ],
+      "crop_xy": [
+        112,
+        68
+      ]
+    },
+    {
+      "id": 92,
+      "type": "junction",
+      "xy": [
+        565,
+        340
+      ],
+      "crop_xy": [
+        113,
+        68
+      ]
+    },
+    {
+      "id": 93,
+      "type": "junction",
+      "xy": [
+        275,
+        345
+      ],
+      "crop_xy": [
+        55,
+        69
+      ]
+    },
+    {
+      "id": 94,
+      "type": "junction",
+      "xy": [
+        280,
+        345
+      ],
+      "crop_xy": [
+        56,
+        69
+      ]
+    },
+    {
+      "id": 95,
+      "type": "junction",
+      "xy": [
+        565,
+        345
+      ],
+      "crop_xy": [
+        113,
+        69
+      ]
+    },
+    {
+      "id": 96,
+      "type": "junction",
+      "xy": [
+        570,
+        345
+      ],
+      "crop_xy": [
+        114,
+        69
+      ]
+    },
+    {
+      "id": 97,
+      "type": "junction",
+      "xy": [
+        615,
+        345
+      ],
+      "crop_xy": [
+        123,
+        69
+      ]
+    },
+    {
+      "id": 98,
+      "type": "junction",
+      "xy": [
+        270,
+        350
+      ],
+      "crop_xy": [
+        54,
+        70
+      ]
+    },
+    {
+      "id": 99,
+      "type": "junction",
+      "xy": [
+        275,
+        350
+      ],
+      "crop_xy": [
+        55,
+        70
+      ]
+    },
+    {
+      "id": 100,
+      "type": "junction",
+      "xy": [
+        610,
+        350
+      ],
+      "crop_xy": [
+        122,
+        70
+      ]
+    },
+    {
+      "id": 101,
+      "type": "junction",
+      "xy": [
+        615,
+        350
+      ],
+      "crop_xy": [
+        123,
+        70
+      ]
+    },
+    {
+      "id": 102,
+      "type": "junction",
+      "xy": [
+        610,
+        355
+      ],
+      "crop_xy": [
+        122,
+        71
+      ]
+    },
+    {
+      "id": 103,
+      "type": "junction",
+      "xy": [
+        605,
+        360
+      ],
+      "crop_xy": [
+        121,
+        72
+      ]
+    },
+    {
+      "id": 104,
+      "type": "junction",
+      "xy": [
+        610,
+        360
+      ],
+      "crop_xy": [
+        122,
+        72
+      ]
+    },
+    {
+      "id": 105,
+      "type": "junction",
+      "xy": [
+        180,
+        365
+      ],
+      "crop_xy": [
+        36,
+        73
+      ]
+    },
+    {
+      "id": 106,
+      "type": "junction",
+      "xy": [
+        185,
+        365
+      ],
+      "crop_xy": [
+        37,
+        73
+      ]
+    },
+    {
+      "id": 107,
+      "type": "junction",
+      "xy": [
+        595,
+        365
+      ],
+      "crop_xy": [
+        119,
+        73
+      ]
+    },
+    {
+      "id": 108,
+      "type": "junction",
+      "xy": [
+        600,
+        365
+      ],
+      "crop_xy": [
+        120,
+        73
+      ]
+    },
+    {
+      "id": 109,
+      "type": "junction",
+      "xy": [
+        605,
+        365
+      ],
+      "crop_xy": [
+        121,
+        73
+      ]
+    },
+    {
+      "id": 110,
+      "type": "junction",
+      "xy": [
+        180,
+        370
+      ],
+      "crop_xy": [
+        36,
+        74
+      ]
+    },
+    {
+      "id": 111,
+      "type": "junction",
+      "xy": [
+        600,
+        370
+      ],
+      "crop_xy": [
+        120,
+        74
+      ]
+    },
+    {
+      "id": 112,
+      "type": "junction",
+      "xy": [
+        175,
+        375
+      ],
+      "crop_xy": [
+        35,
+        75
+      ]
+    },
+    {
+      "id": 113,
+      "type": "junction",
+      "xy": [
+        180,
+        375
+      ],
+      "crop_xy": [
+        36,
+        75
+      ]
+    },
+    {
+      "id": 114,
+      "type": "junction",
+      "xy": [
+        175,
+        380
+      ],
+      "crop_xy": [
+        35,
+        76
+      ]
+    },
+    {
+      "id": 115,
+      "type": "junction",
+      "xy": [
+        170,
+        430
+      ],
+      "crop_xy": [
+        34,
+        86
+      ]
+    },
+    {
+      "id": 116,
+      "type": "junction",
+      "xy": [
+        165,
+        435
+      ],
+      "crop_xy": [
+        33,
+        87
+      ]
+    },
+    {
+      "id": 117,
+      "type": "junction",
+      "xy": [
+        170,
+        435
+      ],
+      "crop_xy": [
+        34,
+        87
+      ]
+    },
+    {
+      "id": 118,
+      "type": "junction",
+      "xy": [
+        140,
+        445
+      ],
+      "crop_xy": [
+        28,
+        89
+      ]
+    },
+    {
+      "id": 119,
+      "type": "junction",
+      "xy": [
+        145,
+        445
+      ],
+      "crop_xy": [
+        29,
+        89
+      ]
+    },
+    {
+      "id": 120,
+      "type": "junction",
+      "xy": [
+        135,
+        450
+      ],
+      "crop_xy": [
+        27,
+        90
+      ]
+    },
+    {
+      "id": 121,
+      "type": "junction",
+      "xy": [
+        140,
+        450
+      ],
+      "crop_xy": [
+        28,
+        90
+      ]
+    },
+    {
+      "id": 122,
+      "type": "endpoint",
+      "xy": [
+        625,
+        125
+      ],
+      "crop_xy": [
+        125,
+        25
+      ]
+    },
+    {
+      "id": 123,
+      "type": "endpoint",
+      "xy": [
+        250,
+        460
+      ],
+      "crop_xy": [
+        50,
+        92
+      ]
+    },
+    {
+      "id": 124,
+      "type": "endpoint",
+      "xy": [
+        15,
+        465
+      ],
+      "crop_xy": [
+        3,
+        93
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "parent": 0,
+      "child": 1,
+      "length_px": 2.0
+    },
+    {
+      "parent": 0,
+      "child": 2,
+      "length_px": 30.0
+    },
+    {
+      "parent": 2,
+      "child": 3,
+      "length_px": 2.0
+    },
+    {
+      "parent": 3,
+      "child": 4,
+      "length_px": 8.0
+    },
+    {
+      "parent": 4,
+      "child": 5,
+      "length_px": 1.0
+    },
+    {
+      "parent": 4,
+      "child": 6,
+      "length_px": 1.0
+    },
+    {
+      "parent": 5,
+      "child": 6,
+      "length_px": 1.0
+    },
+    {
+      "parent": 5,
+      "child": 7,
+      "length_px": 1.0
+    },
+    {
+      "parent": 6,
+      "child": 7,
+      "length_px": 1.0
+    },
+    {
+      "parent": 7,
+      "child": 8,
+      "length_px": 58.0
+    },
+    {
+      "parent": 8,
+      "child": 9,
+      "length_px": 1.0
+    },
+    {
+      "parent": 8,
+      "child": 10,
+      "length_px": 1.0
+    },
+    {
+      "parent": 9,
+      "child": 10,
+      "length_px": 1.0
+    },
+    {
+      "parent": 9,
+      "child": 11,
+      "length_px": 1.0
+    },
+    {
+      "parent": 10,
+      "child": 11,
+      "length_px": 1.0
+    },
+    {
+      "parent": 11,
+      "child": 12,
+      "length_px": 1.0
+    },
+    {
+      "parent": 11,
+      "child": 13,
+      "length_px": 1.0
+    },
+    {
+      "parent": 12,
+      "child": 13,
+      "length_px": 1.0
+    },
+    {
+      "parent": 12,
+      "child": 14,
+      "length_px": 1.0
+    },
+    {
+      "parent": 13,
+      "child": 14,
+      "length_px": 1.0
+    },
+    {
+      "parent": 14,
+      "child": 15,
+      "length_px": 1.0
+    },
+    {
+      "parent": 14,
+      "child": 16,
+      "length_px": 1.0
+    },
+    {
+      "parent": 15,
+      "child": 16,
+      "length_px": 1.0
+    },
+    {
+      "parent": 15,
+      "child": 17,
+      "length_px": 1.0
+    },
+    {
+      "parent": 16,
+      "child": 17,
+      "length_px": 1.0
+    },
+    {
+      "parent": 16,
+      "child": 18,
+      "length_px": 1.0
+    },
+    {
+      "parent": 17,
+      "child": 18,
+      "length_px": 1.0
+    },
+    {
+      "parent": 17,
+      "child": 19,
+      "length_px": 1.0
+    },
+    {
+      "parent": 18,
+      "child": 19,
+      "length_px": 1.0
+    },
+    {
+      "parent": 19,
+      "child": 20,
+      "length_px": 2.0
+    },
+    {
+      "parent": 20,
+      "child": 21,
+      "length_px": 1.0
+    },
+    {
+      "parent": 20,
+      "child": 22,
+      "length_px": 1.0
+    },
+    {
+      "parent": 21,
+      "child": 22,
+      "length_px": 1.0
+    },
+    {
+      "parent": 21,
+      "child": 23,
+      "length_px": 1.0
+    },
+    {
+      "parent": 22,
+      "child": 23,
+      "length_px": 1.0
+    },
+    {
+      "parent": 22,
+      "child": 24,
+      "length_px": 1.0
+    },
+    {
+      "parent": 23,
+      "child": 122,
+      "length_px": 11.0
+    },
+    {
+      "parent": 23,
+      "child": 24,
+      "length_px": 1.0
+    },
+    {
+      "parent": 24,
+      "child": 25,
+      "length_px": 10.0
+    },
+    {
+      "parent": 25,
+      "child": 26,
+      "length_px": 1.0
+    },
+    {
+      "parent": 25,
+      "child": 27,
+      "length_px": 1.0
+    },
+    {
+      "parent": 26,
+      "child": 27,
+      "length_px": 1.0
+    },
+    {
+      "parent": 26,
+      "child": 28,
+      "length_px": 1.0
+    },
+    {
+      "parent": 27,
+      "child": 28,
+      "length_px": 1.0
+    },
+    {
+      "parent": 28,
+      "child": 47,
+      "length_px": 9.0
+    },
+    {
+      "parent": 29,
+      "child": 30,
+      "length_px": 1.0
+    },
+    {
+      "parent": 29,
+      "child": 31,
+      "length_px": 1.0
+    },
+    {
+      "parent": 30,
+      "child": 31,
+      "length_px": 1.0
+    },
+    {
+      "parent": 30,
+      "child": 32,
+      "length_px": 1.0
+    },
+    {
+      "parent": 31,
+      "child": 32,
+      "length_px": 1.0
+    },
+    {
+      "parent": 32,
+      "child": 33,
+      "length_px": 1.0
+    },
+    {
+      "parent": 32,
+      "child": 34,
+      "length_px": 1.0
+    },
+    {
+      "parent": 33,
+      "child": 34,
+      "length_px": 1.0
+    },
+    {
+      "parent": 33,
+      "child": 35,
+      "length_px": 1.0
+    },
+    {
+      "parent": 34,
+      "child": 35,
+      "length_px": 1.0
+    },
+    {
+      "parent": 34,
+      "child": 36,
+      "length_px": 1.0
+    },
+    {
+      "parent": 35,
+      "child": 36,
+      "length_px": 1.0
+    },
+    {
+      "parent": 35,
+      "child": 37,
+      "length_px": 1.0
+    },
+    {
+      "parent": 36,
+      "child": 37,
+      "length_px": 1.0
+    },
+    {
+      "parent": 37,
+      "child": 38,
+      "length_px": 1.0
+    },
+    {
+      "parent": 37,
+      "child": 39,
+      "length_px": 1.0
+    },
+    {
+      "parent": 38,
+      "child": 39,
+      "length_px": 1.0
+    },
+    {
+      "parent": 38,
+      "child": 40,
+      "length_px": 1.0
+    },
+    {
+      "parent": 39,
+      "child": 40,
+      "length_px": 1.0
+    },
+    {
+      "parent": 39,
+      "child": 41,
+      "length_px": 1.0
+    },
+    {
+      "parent": 40,
+      "child": 41,
+      "length_px": 1.0
+    },
+    {
+      "parent": 40,
+      "child": 42,
+      "length_px": 1.0
+    },
+    {
+      "parent": 41,
+      "child": 42,
+      "length_px": 1.0
+    },
+    {
+      "parent": 42,
+      "child": 43,
+      "length_px": 1.0
+    },
+    {
+      "parent": 43,
+      "child": 44,
+      "length_px": 1.0
+    },
+    {
+      "parent": 43,
+      "child": 45,
+      "length_px": 1.0
+    },
+    {
+      "parent": 44,
+      "child": 45,
+      "length_px": 1.0
+    },
+    {
+      "parent": 44,
+      "child": 46,
+      "length_px": 1.0
+    },
+    {
+      "parent": 45,
+      "child": 46,
+      "length_px": 1.0
+    },
+    {
+      "parent": 45,
+      "child": 48,
+      "length_px": 1.0
+    },
+    {
+      "parent": 46,
+      "child": 48,
+      "length_px": 1.0
+    },
+    {
+      "parent": 46,
+      "child": 49,
+      "length_px": 1.0
+    },
+    {
+      "parent": 47,
+      "child": 50,
+      "length_px": 2.0
+    },
+    {
+      "parent": 48,
+      "child": 49,
+      "length_px": 1.0
+    },
+    {
+      "parent": 48,
+      "child": 51,
+      "length_px": 1.0
+    },
+    {
+      "parent": 49,
+      "child": 51,
+      "length_px": 1.0
+    },
+    {
+      "parent": 49,
+      "child": 52,
+      "length_px": 1.0
+    },
+    {
+      "parent": 50,
+      "child": 56,
+      "length_px": 2.0
+    },
+    {
+      "parent": 51,
+      "child": 52,
+      "length_px": 1.0
+    },
+    {
+      "parent": 51,
+      "child": 53,
+      "length_px": 1.0
+    },
+    {
+      "parent": 52,
+      "child": 53,
+      "length_px": 1.0
+    },
+    {
+      "parent": 52,
+      "child": 54,
+      "length_px": 1.0
+    },
+    {
+      "parent": 53,
+      "child": 54,
+      "length_px": 1.0
+    },
+    {
+      "parent": 54,
+      "child": 55,
+      "length_px": 1.0
+    },
+    {
+      "parent": 54,
+      "child": 57,
+      "length_px": 1.0
+    },
+    {
+      "parent": 55,
+      "child": 57,
+      "length_px": 1.0
+    },
+    {
+      "parent": 55,
+      "child": 58,
+      "length_px": 1.0
+    },
+    {
+      "parent": 56,
+      "child": 59,
+      "length_px": 1.0
+    },
+    {
+      "parent": 56,
+      "child": 60,
+      "length_px": 1.0
+    },
+    {
+      "parent": 57,
+      "child": 58,
+      "length_px": 1.0
+    },
+    {
+      "parent": 57,
+      "child": 61,
+      "length_px": 1.0
+    },
+    {
+      "parent": 58,
+      "child": 61,
+      "length_px": 1.0
+    },
+    {
+      "parent": 58,
+      "child": 62,
+      "length_px": 1.0
+    },
+    {
+      "parent": 59,
+      "child": 60,
+      "length_px": 1.0
+    },
+    {
+      "parent": 59,
+      "child": 63,
+      "length_px": 1.0
+    },
+    {
+      "parent": 60,
+      "child": 63,
+      "length_px": 1.0
+    },
+    {
+      "parent": 60,
+      "child": 64,
+      "length_px": 1.0
+    },
+    {
+      "parent": 61,
+      "child": 62,
+      "length_px": 1.0
+    },
+    {
+      "parent": 61,
+      "child": 65,
+      "length_px": 1.0
+    },
+    {
+      "parent": 62,
+      "child": 65,
+      "length_px": 1.0
+    },
+    {
+      "parent": 62,
+      "child": 66,
+      "length_px": 1.0
+    },
+    {
+      "parent": 63,
+      "child": 64,
+      "length_px": 1.0
+    },
+    {
+      "parent": 64,
+      "child": 97,
+      "length_px": 20.0
+    },
+    {
+      "parent": 65,
+      "child": 66,
+      "length_px": 1.0
+    },
+    {
+      "parent": 65,
+      "child": 67,
+      "length_px": 1.0
+    },
+    {
+      "parent": 66,
+      "child": 67,
+      "length_px": 1.0
+    },
+    {
+      "parent": 66,
+      "child": 68,
+      "length_px": 1.0
+    },
+    {
+      "parent": 67,
+      "child": 68,
+      "length_px": 1.0
+    },
+    {
+      "parent": 67,
+      "child": 69,
+      "length_px": 1.0
+    },
+    {
+      "parent": 68,
+      "child": 69,
+      "length_px": 1.0
+    },
+    {
+      "parent": 68,
+      "child": 70,
+      "length_px": 1.0
+    },
+    {
+      "parent": 69,
+      "child": 70,
+      "length_px": 1.0
+    },
+    {
+      "parent": 69,
+      "child": 71,
+      "length_px": 1.0
+    },
+    {
+      "parent": 70,
+      "child": 71,
+      "length_px": 1.0
+    },
+    {
+      "parent": 71,
+      "child": 72,
+      "length_px": 1.0
+    },
+    {
+      "parent": 72,
+      "child": 73,
+      "length_px": 1.0
+    },
+    {
+      "parent": 72,
+      "child": 74,
+      "length_px": 1.0
+    },
+    {
+      "parent": 73,
+      "child": 74,
+      "length_px": 1.0
+    },
+    {
+      "parent": 73,
+      "child": 75,
+      "length_px": 1.0
+    },
+    {
+      "parent": 74,
+      "child": 75,
+      "length_px": 1.0
+    },
+    {
+      "parent": 75,
+      "child": 105,
+      "length_px": 16.0
+    },
+    {
+      "parent": 76,
+      "child": 77,
+      "length_px": 1.0
+    },
+    {
+      "parent": 76,
+      "child": 79,
+      "length_px": 1.0
+    },
+    {
+      "parent": 76,
+      "child": 80,
+      "length_px": 1.0
+    },
+    {
+      "parent": 77,
+      "child": 81,
+      "length_px": 47.0
+    },
+    {
+      "parent": 77,
+      "child": 80,
+      "length_px": 1.0
+    },
+    {
+      "parent": 78,
+      "child": 79,
+      "length_px": 1.0
+    },
+    {
+      "parent": 78,
+      "child": 83,
+      "length_px": 1.0
+    },
+    {
+      "parent": 78,
+      "child": 84,
+      "length_px": 1.0
+    },
+    {
+      "parent": 79,
+      "child": 80,
+      "length_px": 1.0
+    },
+    {
+      "parent": 79,
+      "child": 84,
+      "length_px": 1.0
+    },
+    {
+      "parent": 81,
+      "child": 82,
+      "length_px": 1.0
+    },
+    {
+      "parent": 81,
+      "child": 85,
+      "length_px": 1.0
+    },
+    {
+      "parent": 82,
+      "child": 85,
+      "length_px": 1.0
+    },
+    {
+      "parent": 82,
+      "child": 86,
+      "length_px": 1.0
+    },
+    {
+      "parent": 83,
+      "child": 84,
+      "length_px": 1.0
+    },
+    {
+      "parent": 83,
+      "child": 88,
+      "length_px": 1.0
+    },
+    {
+      "parent": 83,
+      "child": 89,
+      "length_px": 1.0
+    },
+    {
+      "parent": 84,
+      "child": 89,
+      "length_px": 1.0
+    },
+    {
+      "parent": 85,
+      "child": 86,
+      "length_px": 1.0
+    },
+    {
+      "parent": 86,
+      "child": 87,
+      "length_px": 1.0
+    },
+    {
+      "parent": 86,
+      "child": 90,
+      "length_px": 1.0
+    },
+    {
+      "parent": 87,
+      "child": 90,
+      "length_px": 1.0
+    },
+    {
+      "parent": 87,
+      "child": 91,
+      "length_px": 1.0
+    },
+    {
+      "parent": 88,
+      "child": 89,
+      "length_px": 1.0
+    },
+    {
+      "parent": 88,
+      "child": 93,
+      "length_px": 1.0
+    },
+    {
+      "parent": 88,
+      "child": 94,
+      "length_px": 1.0
+    },
+    {
+      "parent": 89,
+      "child": 94,
+      "length_px": 1.0
+    },
+    {
+      "parent": 90,
+      "child": 91,
+      "length_px": 1.0
+    },
+    {
+      "parent": 91,
+      "child": 92,
+      "length_px": 1.0
+    },
+    {
+      "parent": 91,
+      "child": 95,
+      "length_px": 1.0
+    },
+    {
+      "parent": 92,
+      "child": 95,
+      "length_px": 1.0
+    },
+    {
+      "parent": 92,
+      "child": 96,
+      "length_px": 1.0
+    },
+    {
+      "parent": 93,
+      "child": 94,
+      "length_px": 1.0
+    },
+    {
+      "parent": 93,
+      "child": 98,
+      "length_px": 1.0
+    },
+    {
+      "parent": 93,
+      "child": 99,
+      "length_px": 1.0
+    },
+    {
+      "parent": 94,
+      "child": 99,
+      "length_px": 1.0
+    },
+    {
+      "parent": 95,
+      "child": 96,
+      "length_px": 1.0
+    },
+    {
+      "parent": 96,
+      "child": 107,
+      "length_px": 5.0
+    },
+    {
+      "parent": 97,
+      "child": 100,
+      "length_px": 1.0
+    },
+    {
+      "parent": 97,
+      "child": 101,
+      "length_px": 1.0
+    },
+    {
+      "parent": 98,
+      "child": 106,
+      "length_px": 17.0
+    },
+    {
+      "parent": 98,
+      "child": 99,
+      "length_px": 1.0
+    },
+    {
+      "parent": 100,
+      "child": 101,
+      "length_px": 1.0
+    },
+    {
+      "parent": 100,
+      "child": 102,
+      "length_px": 1.0
+    },
+    {
+      "parent": 101,
+      "child": 102,
+      "length_px": 1.0
+    },
+    {
+      "parent": 102,
+      "child": 103,
+      "length_px": 1.0
+    },
+    {
+      "parent": 102,
+      "child": 104,
+      "length_px": 1.0
+    },
+    {
+      "parent": 103,
+      "child": 104,
+      "length_px": 1.0
+    },
+    {
+      "parent": 103,
+      "child": 108,
+      "length_px": 1.0
+    },
+    {
+      "parent": 103,
+      "child": 109,
+      "length_px": 1.0
+    },
+    {
+      "parent": 104,
+      "child": 109,
+      "length_px": 1.0
+    },
+    {
+      "parent": 105,
+      "child": 106,
+      "length_px": 1.0
+    },
+    {
+      "parent": 105,
+      "child": 110,
+      "length_px": 1.0
+    },
+    {
+      "parent": 106,
+      "child": 110,
+      "length_px": 1.0
+    },
+    {
+      "parent": 107,
+      "child": 108,
+      "length_px": 1.0
+    },
+    {
+      "parent": 107,
+      "child": 111,
+      "length_px": 1.0
+    },
+    {
+      "parent": 108,
+      "child": 109,
+      "length_px": 1.0
+    },
+    {
+      "parent": 108,
+      "child": 111,
+      "length_px": 1.0
+    },
+    {
+      "parent": 109,
+      "child": 111,
+      "length_px": 1.0
+    },
+    {
+      "parent": 110,
+      "child": 112,
+      "length_px": 1.0
+    },
+    {
+      "parent": 110,
+      "child": 113,
+      "length_px": 1.0
+    },
+    {
+      "parent": 112,
+      "child": 113,
+      "length_px": 1.0
+    },
+    {
+      "parent": 112,
+      "child": 114,
+      "length_px": 1.0
+    },
+    {
+      "parent": 113,
+      "child": 114,
+      "length_px": 1.0
+    },
+    {
+      "parent": 114,
+      "child": 115,
+      "length_px": 10.0
+    },
+    {
+      "parent": 115,
+      "child": 116,
+      "length_px": 1.0
+    },
+    {
+      "parent": 115,
+      "child": 117,
+      "length_px": 1.0
+    },
+    {
+      "parent": 116,
+      "child": 117,
+      "length_px": 1.0
+    },
+    {
+      "parent": 116,
+      "child": 119,
+      "length_px": 4.0
+    },
+    {
+      "parent": 117,
+      "child": 123,
+      "length_px": 16.0
+    },
+    {
+      "parent": 118,
+      "child": 119,
+      "length_px": 1.0
+    },
+    {
+      "parent": 118,
+      "child": 120,
+      "length_px": 1.0
+    },
+    {
+      "parent": 118,
+      "child": 121,
+      "length_px": 1.0
+    },
+    {
+      "parent": 119,
+      "child": 121,
+      "length_px": 1.0
+    },
+    {
+      "parent": 120,
+      "child": 124,
+      "length_px": 24.0
+    },
+    {
+      "parent": 120,
+      "child": 121,
+      "length_px": 1.0
+    }
+  ],
+  "accepted": true,
+  "reject_reasons": [],
+  "runtime_ms": 11.03
+}

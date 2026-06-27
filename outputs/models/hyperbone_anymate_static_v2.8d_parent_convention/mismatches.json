@@ -1,0 +1,15 @@
+[
+  {
+    "sample": "test:24",
+    "child": 0,
+    "gt_parent": 56,
+    "predicted_parent_argmax": 56,
+    "decoded_parent": -1,
+    "active_child": true,
+    "active_parent": false,
+    "root_selected": false,
+    "self_parent_rejected": false,
+    "cycle_repair_changed": true,
+    "padded_involved": false
+  }
+]
