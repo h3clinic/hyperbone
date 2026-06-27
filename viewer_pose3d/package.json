@@ -1,0 +1,10 @@
+{
+  "name": "hyperbone-pose3d-viewer",
+  "version": "1.0.0",
+  "description": "3D pose viewer for HyperBone internal armature visualization",
+  "private": true,
+  "scripts": {
+    "dev": "npx serve ."
+  },
+  "dependencies": {}
+}

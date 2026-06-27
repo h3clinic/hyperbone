@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HyperBone Pose3D Viewer</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; background: #1a1a2e; color: #e0e0e0; overflow: hidden; }
+        #container { display: flex; height: 100vh; }
+        #viewer3d { flex: 1; position: relative; }
+        #sidebar { width: 320px; background: #16213e; padding: 16px; overflow-y: auto; border-left: 1px solid #333; }
+        canvas { display: block; }
+        h1 { font-size: 16px; color: #4fc3f7; margin-bottom: 12px; }
+        h2 { font-size: 13px; color: #81d4fa; margin: 12px 0 6px; }
+        .metric { display: flex; justify-content: space-between; padding: 4px 0; font-size: 12px; border-bottom: 1px solid #1a1a2e; }
+        .metric-label { color: #aaa; }
+        .metric-value { color: #fff; font-weight: 600; }
+        .controls { margin: 12px 0; }
+        .controls button { background: #0f3460; color: #e0e0e0; border: 1px solid #4fc3f7; padding: 6px 12px; margin: 2px; cursor: pointer; border-radius: 3px; font-size: 11px; }
+        .controls button:hover { background: #4fc3f7; color: #000; }
+        .controls button.active { background: #4fc3f7; color: #000; }
+        input[type="range"] { width: 100%; margin: 8px 0; }
+        .toggle { display: flex; align-items: center; gap: 8px; margin: 4px 0; font-size: 12px; }
+        .toggle input { accent-color: #4fc3f7; }
+        .legend { margin-top: 12px; font-size: 11px; }
+        .legend-item { display: flex; align-items: center; gap: 6px; margin: 3px 0; }
+        .legend-dot { width: 10px; height: 10px; border-radius: 50%; }
+        #status { position: absolute; top: 10px; left: 10px; background: rgba(0,0,0,0.7); padding: 8px 12px; border-radius: 4px; font-size: 11px; }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="viewer3d">
+            <canvas id="canvas3d"></canvas>
+            <div id="status">Loading...</div>
+        </div>
+        <div id="sidebar">
+            <h1>HyperBone Pose3D Viewer</h1>
+
+            <div class="controls">
+                <button id="btnPlay">▶ Play</button>
+                <button id="btnPause">⏸ Pause</button>
+                <button id="btnPrev">◀ Prev</button>
+                <button id="btnNext">Next ▶</button>
+            </div>
+
+            <div>
+                <label for="frameSlider" style="font-size:12px;">Frame: <span id="frameLabel">0</span></label>
+                <input type="range" id="frameSlider" min="0" max="120" value="0">
+            </div>
+
+            <h2>Toggles</h2>
+            <div class="toggle"><input type="checkbox" id="togGT" checked><label for="togGT">GT Armature (cyan)</label></div>
+            <div class="toggle"><input type="checkbox" id="togHB" checked><label for="togHB">HyperBone Graph (yellow)</label></div>
+            <div class="toggle"><input type="checkbox" id="togJointNames" ><label for="togJointNames">Joint Names</label></div>
+            <div class="toggle"><input type="checkbox" id="togBbox" checked><label for="togBbox">BBox Plane</label></div>
+            <div class="toggle"><input type="checkbox" id="togProjected" checked><label for="togProjected">Projected 2D Plane</label></div>
+
+            <h2>Metrics</h2>
+            <div class="metric"><span class="metric-label">Frame:</span><span class="metric-value" id="metFrame">-</span></div>
+            <div class="metric"><span class="metric-label">GT Joints:</span><span class="metric-value" id="metGTJoints">-</span></div>
+            <div class="metric"><span class="metric-label">GT Bones:</span><span class="metric-value" id="metGTBones">-</span></div>
+            <div class="metric"><span class="metric-label">HB Nodes:</span><span class="metric-value" id="metHBNodes">-</span></div>
+            <div class="metric"><span class="metric-label">HB Edges:</span><span class="metric-value" id="metHBEdges">-</span></div>
+            <div class="metric"><span class="metric-label">Accepted:</span><span class="metric-value" id="metAccepted">-</span></div>
+            <div class="metric"><span class="metric-label">NN Error (px):</span><span class="metric-value" id="metNNError">-</span></div>
+            <div class="metric"><span class="metric-label">Coverage:</span><span class="metric-value" id="metCoverage">-</span></div>
+
+            <h2>Legend</h2>
+            <div class="legend">
+                <div class="legend-item"><div class="legend-dot" style="background:#00e5ff;"></div>GT Joint</div>
+                <div class="legend-item"><div class="legend-dot" style="background:#0097a7;"></div>GT Bone</div>
+                <div class="legend-item"><div class="legend-dot" style="background:#ffeb3b;"></div>HyperBone Node</div>
+                <div class="legend-item"><div class="legend-dot" style="background:#ff9800;"></div>HyperBone Edge</div>
+            </div>
+
+            <h2>Info</h2>
+            <p style="font-size:11px; color:#888; margin-top:8px;">
+                GT armature = true internal 3D bones from Blender.<br>
+                HyperBone graph = 2D structural contour skeleton lifted to canonical 3D (z=0).<br>
+                Target: predict internal 3D joints, not contour skeleton.
+            </p>
+        </div>
+    </div>
+
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+        }
+    }
+    </script>
+    <script type="module" src="src/main.js"></script>
+</body>
+</html>

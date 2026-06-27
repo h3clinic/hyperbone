@@ -1,0 +1,35 @@
+# Python cache/artifacts
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+.pytest_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Logs
+*.log
+
+# Project-generated heavy artifacts
+checkpoints/
+datasets/
+output/
+outputs/
+assets/
+HyperVid/
+
+# Large media/model formats
+*.fbx
+*.glb
+*.mp4
+*.mov
+*.avi
+
+# Optional local/editor state
+.DS_Store
+Thumbs.db
+.vscode/
