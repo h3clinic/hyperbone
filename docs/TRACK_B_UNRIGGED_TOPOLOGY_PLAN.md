@@ -138,6 +138,68 @@ Same two-stage cached eval as Track A:
 
 ---
 
-## Next Concrete Step
+## Signal Audit Results (2026-06-28)
 
-Run the signal audit: compute ROC-AUC for geodesic distance, local curvature, and multi-scale density on the Anymate test set (with skinning features masked). If no signal exceeds AUC 0.80, Track B requires a fundamentally different approach and should be scoped accordingly before investing engineering effort.
+**Conclusion: hand-crafted geometry features are dead for Track B.**
+
+All 13 geometry features tested. Zero exceeded the 0.80 AUC threshold:
+
+| Rank | Feature | ROC-AUC |
+|------|---------|---------|
+| 1 | euclidean_dist | 0.716 |
+| 2 | relative_edge_length | 0.713 |
+| 3 | geodesic_dist | 0.618 |
+| 4 | tube_density | 0.568 |
+| 5 | curvature_diff | 0.567 |
+| 6-13 | density/normal/cross-section | 0.52-0.56 |
+
+Reference: skinning_cosine = 0.946, max_shared_weight = 0.939.
+
+Script: `scripts/audit_unrigged_geometry_topology_features.py`
+Report: `outputs/models/hyperbone_track_b_geometry_audit/geometry_signal_audit.json`
+
+---
+
+## Track B v1: Geometry-Only Student (Teacher-Student Distillation)
+
+The audit killed feature engineering. The remaining path:
+
+**Use Track A (v4.1) as teacher.** Train a geometry-only student that infers topology from local mesh patches without skinning at inference.
+
+### Architecture
+
+```
+Per-joint:
+  PointNetLite encodes local mesh patch (xyz + normals) -> joint_mesh_token
+
+Per-edge:
+  concat(token_i, token_j, corridor_token, 16-dim geom_feats) -> MLP -> edge score
+```
+
+### Inputs (NO skinning)
+
+For each candidate edge (i, j):
+- Local mesh patch around joint i (64 pts, xyz + normals)
+- Local mesh patch around joint j (64 pts, xyz + normals)
+- Corridor mesh patch between i and j (64 pts, xyz + normals)
+- 16-dim geometric edge features (distance, density, direction, ranks)
+
+### Targets
+
+- GT edge label (binary)
+- Optional: v4.1 teacher cost/score for distillation
+
+### Files
+
+- Model: `hyperbone/models/geometry_edge_student.py`
+- Prototype trainer: `scripts/train_geometry_student_prototype.py`
+
+### Pass criteria
+
+- Prototype: ROC-AUC meaningfully above Euclidean baseline (0.716)
+- Full-scale: F1 > 0.77 (must beat v3.1 neural-only ceiling)
+- Strong pass: F1 >= 0.85
+
+### Decision gate
+
+If the 200-sample prototype cannot beat Euclidean distance AUC by > 0.02, stop before scaling. The representation change is not working.
