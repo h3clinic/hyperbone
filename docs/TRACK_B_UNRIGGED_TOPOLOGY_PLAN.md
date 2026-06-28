@@ -203,3 +203,93 @@ For each candidate edge (i, j):
 ### Decision gate
 
 If the 200-sample prototype cannot beat Euclidean distance AUC by > 0.02, stop before scaling. The representation change is not working.
+
+### Prototype result (2026-06-28)
+
+**Decision gate: PASSED.**
+
+| Metric | Euclidean | Student | Delta |
+|--------|-----------|---------|-------|
+| ROC-AUC | 0.716 | 0.905 | +0.190 |
+| PR-AUC | 0.269 | 0.621 | +0.351 |
+
+Best epoch: 17/30. Reference: skinning_cosine ROC=0.946.
+
+---
+
+## Track B v1 Full Training (2026-06-28)
+
+Pipeline: train on train, select on val, test once.
+
+### Files
+
+- Cache builder: `scripts/build_geometry_student_cache.py`
+- Full trainer: `scripts/train_geometry_student_full.py`
+- Topology eval: `scripts/eval_geometry_student_topology.py`
+
+### Eval methods
+
+- distance_only: Kruskal MST on -distance
+- density: midpoint density - distance
+- student_only: Kruskal MST on student edge scores
+- student_dist_hybrid: student score - weight * relative_distance
+
+### Pass criteria
+
+- Minimum: topology F1 > 0.77 (beats v3.1 node-only)
+- Strong: F1 >= 0.82
+- Research pass: F1 >= 0.85
+
+### v1 Result (2026-06-28): BELOW THRESHOLD
+
+Training: 50 epochs on 4464 train samples (1.6M edges), best epoch 30.
+
+| Metric | Baseline | Student | Delta |
+|--------|----------|---------|-------|
+| Val ROC-AUC | 0.727 | 0.873 | +0.147 |
+| Val PR-AUC | 0.288 | 0.561 | +0.273 |
+
+Topology (test, 572 samples, val-tuned dist_weight=10.0):
+
+| Method | F1 |
+|--------|------|
+| distance_only | 0.628 |
+| density | 0.596 |
+| student_only | 0.638 |
+| student_dist_hybrid | 0.678 |
+
+**Verdict: BELOW THRESHOLD (F1=0.678, needed >0.77)**
+
+The edge classifier learned real signal (ROC=0.873), but BCE edge training does not translate to topology recovery. The MST decoder needs near-perfect ranking of the top N-1 edges, not just good average ranking. The training objective is wrong for topology.
+
+---
+
+## Track B v1.1: Topology-Aware Teacher Distillation (2026-06-28)
+
+v1 proved geometry signal exists. v1.1 fixes the objective mismatch.
+
+### Changes from v1
+
+1. **Training targets**: v4.1 teacher edge selection + scores (skinning used as supervision only)
+2. **Loss function**: per-sample ranking loss + teacher distillation, not independent BCE
+3. **Checkpoint selection**: val topology F1, not val PR-AUC
+4. **Student input**: still geometry-only (no skinning)
+
+### Loss components
+
+- A: GT BCE (edge label supervision)
+- B: Teacher BCE (predict v4.1-selected edges)
+- C: Pairwise ranking (score(pos) > score(hard_neg) + margin)
+- D: Listwise/top-k (top E predicted edges match GT/teacher set)
+
+### Files
+
+- Teacher cache augmenter: `scripts/augment_cache_with_teacher.py`
+- v1.1 trainer: `scripts/train_geometry_student_v11.py`
+- Topology eval: `scripts/eval_geometry_student_topology.py` (reused)
+
+### Pass criteria (same as v1)
+
+- Minimum: F1 > 0.77
+- Strong: F1 >= 0.82
+- Research pass: F1 >= 0.85
