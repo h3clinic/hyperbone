@@ -1,0 +1,18 @@
+{
+  "track": "rigged_skinned_asset_topology",
+  "method": "hybrid_skinning_cost_mst",
+  "optimizer": "density_normalized_mst",
+  "candidate_k": 16,
+  "neural_weight": 1.0,
+  "skin_cosine_weight": 4.0,
+  "shared_weight": 4.0,
+  "distance_weight": 1.0,
+  "degree_penalty": 0.05,
+  "long_edge_penalty": 0.25,
+  "mutual_bonus": 0.2,
+  "max_degree": 4,
+  "test_edge_f1": 0.888,
+  "test_selected_to_gt": 1.008,
+  "test_cycles": 0.00,
+  "caveat": "Skinning features are NOT available for unrigged video or raw object meshes. This is Track A only."
+}

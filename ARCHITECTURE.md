@@ -333,3 +333,39 @@ This requires separating:
 - **temporal graph motion** → video-derived skeleton animation
 
 **Immediate next step:** the skeleton-label factory. Once that works, training HyperBone is straightforward. Without it, the model has no reliable target and will hallucinate fake bones.
+
+---
+
+## 11. v4.1 Claim Boundary (Topology Extraction)
+
+**Status:** v4.1 is frozen and validated.
+
+### What v4.1 solves (Track A)
+
+HyperBone v4.1 recovers skeleton topology from known joint positions when mesh skinning context is available:
+- Input: rigged/skinned 3D asset with GT joint positions and mesh skinning weights.
+- Output: undirected edge adjacency (which joints are connected).
+- Test F1: 0.888, sel/GT: 1.008, cycles: 0.00.
+- Method: skinning-aware hybrid cost MST (density + neural + skinning_cosine + max_shared_weight).
+- Dataset: Anymate static rig dataset (2,808 assets, 572 test).
+- Ablation: density(0.632) → v3.1 neural(0.756) → skin_cos(0.826) / max_shared_wt(0.806) → v4.1 combined(0.888).
+
+### What v4.1 does NOT solve (Track B)
+
+- Unrigged video or raw object meshes (no skinning signal).
+- Direct joint discovery from raw geometry without GT joint positions.
+- Full skeleton inference end-to-end from mesh alone.
+
+The ceiling for Track B (geometry-only, no skinning) is approximately F1=0.77. This is a separate, open research problem.
+
+### Locked config
+
+See `configs/topology/hyperbone_v4_1_default.json` for the frozen hyperparameters.
+
+### Production CLI
+
+`scripts/predict_topology_v41.py` — takes a rigged/skinned asset, outputs adjacency JSON and optional overlay PNG.
+
+### Remaining failure mode
+
+Dominant FN source is branch--chain edges (2,489 FN). Any v4.2 work should narrow-target this bucket only, with pass target F1>0.90 and no cycle explosion.

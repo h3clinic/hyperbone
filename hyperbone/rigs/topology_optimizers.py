@@ -256,6 +256,231 @@ def hybrid_mst_plus_branches(joint_pos: torch.Tensor, active_mask: torch.Tensor,
     return base
 
 
+def _compute_branch_likeness(
+    active_nodes: List[int],
+    edges: List[EdgeCandidate],
+    mst_mask: torch.Tensor,
+    neural_scores: torch.Tensor | None,
+    candidate_mask: torch.Tensor | None,
+) -> Dict[int, float]:
+    """Per-node branch-likeness from cheap structural features.
+
+    Combines MST degree, count of high-scoring incident neural edges,
+    and candidate centrality into a [0, 1] score.
+    """
+    mst_degree: Dict[int, int] = {n: int(mst_mask[n].sum().item()) for n in active_nodes}
+    incident_high: Dict[int, int] = {n: 0 for n in active_nodes}
+    candidate_count: Dict[int, int] = {n: 0 for n in active_nodes}
+
+    neural_thresh = 0.0
+    for e in edges:
+        candidate_count[e.i] = candidate_count.get(e.i, 0) + 1
+        candidate_count[e.j] = candidate_count.get(e.j, 0) + 1
+        if neural_scores is not None:
+            ns = float(neural_scores[e.i, e.j].item())
+            if ns > neural_thresh:
+                incident_high[e.i] = incident_high.get(e.i, 0) + 1
+                incident_high[e.j] = incident_high.get(e.j, 0) + 1
+
+    max_cand = max(candidate_count.values()) if candidate_count else 1
+    max_inc = max(incident_high.values()) if incident_high else 1
+
+    branch_score: Dict[int, float] = {}
+    for n in active_nodes:
+        deg_signal = min(mst_degree.get(n, 0) / 3.0, 1.0)
+        cand_signal = candidate_count.get(n, 0) / max(max_cand, 1)
+        inc_signal = incident_high.get(n, 0) / max(max_inc, 1)
+        branch_score[n] = 0.4 * deg_signal + 0.3 * cand_signal + 0.3 * inc_signal
+
+    return branch_score
+
+
+def _node_type_label(branch_score: float, mst_degree: int) -> str:
+    if mst_degree <= 1 and branch_score < 0.3:
+        return "endpoint"
+    elif branch_score >= 0.5 or mst_degree >= 3:
+        return "branch"
+    else:
+        return "chain"
+
+
+def _edge_type_prior(type_i: str, type_j: str) -> float:
+    pair = tuple(sorted([type_i, type_j]))
+    priors = {
+        ("chain", "chain"): 0.0,
+        ("branch", "chain"): 0.3,
+        ("branch", "endpoint"): 0.15,
+        ("branch", "branch"): 0.05,
+        ("chain", "endpoint"): -0.1,
+        ("endpoint", "endpoint"): -0.5,
+    }
+    return priors.get(pair, 0.0)
+
+
+def hybrid_mst_plus_branch_insert(
+    joint_pos: torch.Tensor,
+    active_mask: torch.Tensor,
+    neural_scores: torch.Tensor | None,
+    k: int = 12,
+    distance_weight: float = 1.0,
+    neural_weight: float = 2.0,
+    degree_penalty: float = 0.05,
+    long_edge_penalty: float = 0.25,
+    mutual_bonus: float = 0.2,
+    candidate_mask: torch.Tensor | None = None,
+    branch_budget_ratio: float = 0.10,
+    branch_score_threshold: float = 0.0,
+    endpoint_endpoint_penalty: float = 2.0,
+    cycle_penalty: float = 1.0,
+    branch_neural_min: float = 0.0,
+) -> torch.Tensor:
+    """v3.2 branch-aware optimizer: MST backbone + controlled branch insertion."""
+    num_nodes = int(joint_pos.shape[0])
+    active_nodes = _active_indices(active_mask)
+    if len(active_nodes) <= 1:
+        return _empty_edge_mask(num_nodes, device=joint_pos.device)
+
+    edges = _build_hybrid_candidates(
+        joint_pos=joint_pos,
+        active_mask=active_mask,
+        neural_scores=neural_scores,
+        k=k,
+        distance_weight=float(distance_weight),
+        neural_weight=float(neural_weight),
+        mutual_bonus=float(mutual_bonus),
+        long_edge_penalty=float(long_edge_penalty),
+        candidate_mask=candidate_mask,
+    )
+    if not edges:
+        return _empty_edge_mask(num_nodes, device=joint_pos.device)
+
+    # Stage 1: Build MST backbone (v3.1 density_normalized_mst)
+    tree_edges = max(len(active_nodes) - 1, 0)
+    mst = _kruskal_dynamic_score(
+        num_nodes=num_nodes,
+        active_nodes=active_nodes,
+        edges=edges,
+        max_edges=tree_edges,
+        degree_cap=None,
+        degree_penalty=float(degree_penalty),
+    )
+
+    # Stage 2: Compute branch-likeness
+    branch_scores = _compute_branch_likeness(
+        active_nodes, edges, mst, neural_scores, candidate_mask,
+    )
+    mst_degree = {n: int(mst[n].sum().item()) for n in active_nodes}
+    node_types = {n: _node_type_label(branch_scores[n], mst_degree[n]) for n in active_nodes}
+
+    # Stage 3: Score and rank branch insertion candidates
+    branch_budget = max(1, int(round(float(branch_budget_ratio) * len(active_nodes))))
+
+    # Compute MST path distances for short-cycle detection
+    # Build adjacency list from MST
+    mst_adj: Dict[int, List[int]] = {n: [] for n in active_nodes}
+    for i in active_nodes:
+        for j in active_nodes:
+            if j > i and mst[i, j]:
+                mst_adj[i].append(j)
+                mst_adj[j].append(i)
+
+    def mst_path_len(src: int, dst: int, max_hops: int = 10) -> int:
+        """BFS hop count along MST between src and dst. Returns max_hops+1 if unreachable."""
+        if src == dst:
+            return 0
+        visited = {src}
+        queue = [(src, 0)]
+        qi = 0
+        while qi < len(queue):
+            node, depth = queue[qi]
+            qi += 1
+            if depth >= max_hops:
+                continue
+            for nb in mst_adj.get(node, []):
+                if nb == dst:
+                    return depth + 1
+                if nb not in visited:
+                    visited.add(nb)
+                    queue.append((nb, depth + 1))
+        return max_hops + 1
+
+    # Normalize distances for scoring
+    all_dists = [e.dist for e in edges]
+    dist_median = float(sorted(all_dists)[len(all_dists) // 2]) if all_dists else 1.0
+
+    branch_candidates = []
+    for e in edges:
+        if mst[e.i, e.j]:
+            continue
+
+        neural_term = 0.0 if neural_scores is None else float(neural_scores[e.i, e.j].item())
+        if neural_term < branch_neural_min:
+            continue
+
+        type_i = node_types[e.i]
+        type_j = node_types[e.j]
+        branch_i = branch_scores[e.i]
+        branch_j = branch_scores[e.j]
+
+        # Branch-likeness requirement
+        max_branch = max(branch_i, branch_j)
+        if max_branch < branch_score_threshold:
+            continue
+
+        # Edge type prior
+        type_prior = _edge_type_prior(type_i, type_j)
+
+        # Endpoint-endpoint suppression
+        ee_pen = 0.0
+        if type_i == "endpoint" and type_j == "endpoint":
+            ee_pen = -float(endpoint_endpoint_penalty)
+
+        # Short-cycle penalty: penalize edges that create very short cycles (2-3 hops)
+        # but allow edges that bridge distant parts of the MST (long cycles = structural branches)
+        path_hops = mst_path_len(e.i, e.j)
+        if path_hops <= 2:
+            cy_pen = -float(cycle_penalty)
+        elif path_hops <= 4:
+            cy_pen = -float(cycle_penalty) * 0.3
+        else:
+            cy_pen = 0.0
+
+        # Relative distance (not absolute) — how long is this edge vs typical edges?
+        rel_dist = e.dist / max(dist_median, 1e-6)
+
+        # Combined branch insertion score
+        insertion_score = (
+            neural_term
+            + type_prior
+            + 0.3 * max_branch
+            + ee_pen
+            + cy_pen
+            - 0.2 * max(rel_dist - 1.0, 0.0)
+        )
+
+        branch_candidates.append((insertion_score, e, path_hops <= 2))
+
+    branch_candidates.sort(key=lambda x: x[0], reverse=True)
+
+    # Stage 4: Insert top branch edges under budget
+    out = mst.clone()
+    degree = dict(mst_degree)
+    added = 0
+
+    for score, e, is_short_cycle in branch_candidates:
+        if added >= branch_budget:
+            break
+        if out[e.i, e.j]:
+            continue
+
+        _set_undirected(out, e.i, e.j)
+        degree[e.i] = degree.get(e.i, 0) + 1
+        degree[e.j] = degree.get(e.j, 0) + 1
+        added += 1
+
+    return out.to(joint_pos.device)
+
+
 OPTIMIZER_REGISTRY = {
     "knn_mst": knn_mst,
     "degree_capped_mst": degree_capped_mst,
@@ -263,6 +488,8 @@ OPTIMIZER_REGISTRY = {
     "density_normalized_mst": density_normalized_mst,
     "mutual_knn_sparse": mutual_knn_sparse,
     "hybrid_mst_plus_branches": hybrid_mst_plus_branches,
+    "hybrid_mst_plus_branch_insert": hybrid_mst_plus_branch_insert,
+    "hybrid_skinning_cost_mst": None,  # placeholder, set after function definition
 }
 
 
@@ -515,3 +742,145 @@ def hybrid_neural_cost_optimize(
         raise ValueError(f"Unknown hybrid mode: {mode}")
 
     return out.to(joint_pos.device)
+
+
+# ---------------------------------------------------------------------------
+# v4.1: Skinning-aware hybrid cost MST
+# ---------------------------------------------------------------------------
+
+def _build_hybrid_skinning_candidates(
+    joint_pos: torch.Tensor,
+    active_mask: torch.Tensor,
+    neural_scores: torch.Tensor | None,
+    skinning_cosine: torch.Tensor | None,
+    max_shared_weight: torch.Tensor | None,
+    k: int,
+    distance_weight: float,
+    neural_weight: float,
+    skin_cosine_weight: float,
+    shared_weight: float,
+    mutual_bonus: float,
+    long_edge_penalty: float,
+    candidate_mask: torch.Tensor | None,
+) -> List[EdgeCandidate]:
+    """Build candidates with skinning features in the cost function.
+
+    score = -distance_weight * density_norm
+            + neural_weight * neural_logit
+            + skin_cosine_weight * skinning_cosine
+            + shared_weight * max_shared_weight
+            - long_edge_penalty * norm_dist
+            + mutual_bonus * mutual
+    """
+    active_nodes, dmat, knn_bool, k_eff = _build_knn_meta(joint_pos, active_mask, k)
+    if len(active_nodes) <= 1:
+        return []
+
+    sorted_d, _ = torch.sort(dmat, dim=1)
+    local_density = sorted_d[:, :k_eff].mean(dim=1)
+
+    finite_d = dmat[torch.isfinite(dmat)]
+    dist_max = finite_d.max().clamp(min=1e-6)
+
+    edges: List[EdgeCandidate] = []
+    for ia in range(len(active_nodes)):
+        gi = int(active_nodes[ia])
+        for ja in range(ia + 1, len(active_nodes)):
+            gj = int(active_nodes[ja])
+            if candidate_mask is not None and not bool(candidate_mask[gi, gj].item()):
+                continue
+
+            dist = float(dmat[ia, ja].item())
+            norm_dist = float((dmat[ia, ja] / dist_max).item())
+            denom = float((0.5 * (local_density[ia] + local_density[ja])).item())
+            density_norm = float(dist / max(denom, 1e-6))
+            mutual = 1.0 if bool(knn_bool[ia, ja].item() and knn_bool[ja, ia].item()) else 0.0
+            neural_term = 0.0 if neural_scores is None else float(neural_scores[gi, gj].item())
+            cos_term = 0.0 if skinning_cosine is None else float(skinning_cosine[gi, gj].item())
+            sw_term = 0.0 if max_shared_weight is None else float(max_shared_weight[gi, gj].item())
+
+            det_cost = distance_weight * density_norm + long_edge_penalty * norm_dist
+            score = (
+                -det_cost
+                + neural_weight * neural_term
+                + skin_cosine_weight * cos_term
+                + shared_weight * sw_term
+                + mutual_bonus * mutual
+            )
+            edges.append(EdgeCandidate(i=gi, j=gj, dist=dist, score=score))
+
+    return edges
+
+
+def hybrid_skinning_cost_optimize(
+    joint_pos: torch.Tensor,
+    active_mask: torch.Tensor,
+    neural_scores: torch.Tensor | None,
+    skinning_cosine: torch.Tensor | None = None,
+    max_shared_weight: torch.Tensor | None = None,
+    mode: str = "density_normalized_mst",
+    k: int = 12,
+    distance_weight: float = 1.0,
+    neural_weight: float = 1.0,
+    skin_cosine_weight: float = 1.0,
+    shared_weight: float = 1.0,
+    degree_penalty: float = 0.05,
+    long_edge_penalty: float = 0.25,
+    mutual_bonus: float = 0.2,
+    max_degree: int = 4,
+    candidate_mask: torch.Tensor | None = None,
+) -> torch.Tensor:
+    """v4.1 skinning-aware hybrid optimizer.
+
+    Extends v3.1 by adding skinning_cosine and max_shared_weight to the
+    edge cost function. No branch insertion.
+    """
+    num_nodes = int(joint_pos.shape[0])
+    active_nodes = _active_indices(active_mask)
+    if len(active_nodes) <= 1:
+        return _empty_edge_mask(num_nodes, device=joint_pos.device)
+
+    edges = _build_hybrid_skinning_candidates(
+        joint_pos=joint_pos,
+        active_mask=active_mask,
+        neural_scores=neural_scores,
+        skinning_cosine=skinning_cosine,
+        max_shared_weight=max_shared_weight,
+        k=k,
+        distance_weight=float(distance_weight),
+        neural_weight=float(neural_weight),
+        skin_cosine_weight=float(skin_cosine_weight),
+        shared_weight=float(shared_weight),
+        mutual_bonus=float(mutual_bonus),
+        long_edge_penalty=float(long_edge_penalty),
+        candidate_mask=candidate_mask,
+    )
+    if not edges:
+        return _empty_edge_mask(num_nodes, device=joint_pos.device)
+
+    tree_edges = max(len(active_nodes) - 1, 0)
+    if mode == "density_normalized_mst":
+        out = _kruskal_dynamic_score(
+            num_nodes=num_nodes,
+            active_nodes=active_nodes,
+            edges=edges,
+            max_edges=tree_edges,
+            degree_cap=None,
+            degree_penalty=float(degree_penalty),
+        )
+    elif mode == "degree_capped_mst":
+        out = _kruskal_dynamic_score(
+            num_nodes=num_nodes,
+            active_nodes=active_nodes,
+            edges=edges,
+            max_edges=tree_edges,
+            degree_cap=max(int(max_degree), 1),
+            degree_penalty=float(degree_penalty),
+        )
+    else:
+        raise ValueError(f"Unknown mode: {mode}")
+
+    return out.to(joint_pos.device)
+
+
+OPTIMIZER_REGISTRY["hybrid_skinning_cost_mst"] = hybrid_skinning_cost_optimize
