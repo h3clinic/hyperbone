@@ -293,3 +293,91 @@ v1 proved geometry signal exists. v1.1 fixes the objective mismatch.
 - Minimum: F1 > 0.77
 - Strong: F1 >= 0.82
 - Research pass: F1 >= 0.85
+
+### v1.1 Result (2026-06-28): BELOW THRESHOLD
+
+Best val topology F1: 0.670 (epoch 25/50).
+
+| Method | F1 |
+|--------|------|
+| distance_only | 0.628 |
+| density | 0.596 |
+| student_only | 0.649 |
+| student_dist_hybrid | 0.662 |
+
+**Verdict: BELOW THRESHOLD (F1=0.662, needed >0.77)**
+
+Teacher distillation + ranking loss on independent edge scoring made student_only slightly better but made hybrid decode worse. The score distribution became less compatible with MST. The architecture — not the loss — is the bottleneck.
+
+---
+
+## Track B v2: Edge-Graph Message Passing Student (2026-06-28)
+
+v1/v1.1 proved the bottleneck is independent edge scoring, not the loss function. v2 replaces per-edge MLP with edge-graph message passing.
+
+### Architecture
+
+```
+Per-edge initial embedding:
+  PointNetLite(patch_i) || PointNetLite(patch_j) || CorridorNet(corridor) || geom_feats
+  → Linear projection → edge_dim
+
+Line graph construction:
+  Two edge-nodes connected if they share a joint endpoint
+
+Message passing (3 rounds):
+  Pre-norm → max-aggregation → gated residual update
+  Max-agg preserves discriminative signal (mean-agg collapsed it)
+
+Score head:
+  MLP(edge_dim → 1) → per-edge logit with graph context
+```
+
+### Key design decisions
+
+1. **Max aggregation** instead of mean: mean over ~30 neighbors washed out signal
+2. **Gated residual**: learned gate controls how much context to mix in
+3. **Pre-norm**: LayerNorm before message passing, not after residual
+4. **Gradient accumulation (4 steps)**: per-sample SGD was too noisy for 305K params
+5. **Warmup (3 epochs)**: prevents early divergence with lr=3e-3
+
+### Files
+
+- Model: `hyperbone/models/geometry_edge_graph_student.py`
+- One-batch overfit: `scripts/overfit_edge_graph_one_batch.py`
+- Full trainer: `scripts/train_edge_graph_student_v2.py`
+
+### Training
+
+- 305,092 params
+- 50 epochs, lr=3e-3 with warmup + cosine annealing
+- BCE + pairwise ranking loss (weight=2.0, margin=1.0)
+- Gradient accumulation (4 steps)
+- Best epoch: 46, best val topology F1: 0.795
+
+### v2 Result (2026-06-28): MINIMUM PASS
+
+| Method | F1 |
+|--------|------|
+| distance_only | 0.628 |
+| density | 0.577 |
+| student_only | **0.802** |
+| student_dist_hybrid | 0.788 |
+
+Degree-bucketed F1 (student_only):
+
+| Bucket | N | F1 |
+|--------|---|------|
+| tiny(<=10) | 5 | 0.775 |
+| small(11-25) | 79 | 0.790 |
+| medium(26-50) | 253 | 0.841 |
+| large(>50) | 235 | 0.766 |
+
+**Verdict: MINIMUM PASS (F1=0.802, needed >0.77)**
+
+- student_only (0.802) beats student_dist_hybrid (0.788): the model's scores are strong enough that distance penalty hurts
+- Surpassed v3.1 node-only (~0.756) by +0.046
+- Surpassed v1 BCE (0.678) by +0.124
+- Surpassed v1.1 distilled (0.662) by +0.140
+- Zero cycles, 1 component per sample (MST constraint)
+- Not yet strong pass (0.82) or research pass (0.85)
