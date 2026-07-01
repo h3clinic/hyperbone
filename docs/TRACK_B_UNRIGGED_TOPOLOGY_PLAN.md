@@ -381,3 +381,59 @@ Degree-bucketed F1 (student_only):
 - Surpassed v1.1 distilled (0.662) by +0.140
 - Zero cycles, 1 component per sample (MST constraint)
 - Not yet strong pass (0.82) or research pass (0.85)
+
+---
+
+## Track B v2.1: Edge-Graph + Teacher Distillation (2026-06-29)
+
+v2 proved the edge-graph architecture works. v1.1 showed teacher distillation
+failed on the *independent* scorer — but the failure was the architecture, not
+the teacher. v2.1 retries teacher distillation on the *edge-graph* model.
+
+### Changes from v2
+
+Same architecture, warm-started from the v2 checkpoint. Added two teacher
+losses on top of GT BCE + hard-negative ranking:
+
+- **Teacher BCE**: predict v4.1-teacher-selected edges (weight 0.5)
+- **Score distillation**: KL(teacher || student) on softmax score distributions,
+  temperature 2.0 (weight 1.0)
+
+Teacher labels/scores come from `cache_*_v11.pt` (v4.1 skinning-aware teacher).
+Skinning is used only as a training target — never as student input.
+
+### Files
+
+- Trainer: `scripts/train_edge_graph_student_v21.py`
+- Eval: `scripts/eval_edge_graph_student_topology.py` (reused)
+
+### Training
+
+- Warm start from `best_student_v2.pt`, lr=1e-3, 60 epochs, cosine + 3ep warmup
+- Best epoch: 49, best val topology F1: 0.818
+
+### v2.1 Result (2026-06-29): improved, still MINIMUM PASS
+
+| Method | F1 |
+|--------|------|
+| distance_only | 0.628 |
+| density | 0.577 |
+| student_only | **0.818** |
+| student_dist_hybrid | 0.803 |
+
+Degree-bucketed F1 (student_only):
+
+| Bucket | N | F1 | vs v2 |
+|--------|---|------|------|
+| tiny(<=10) | 5 | 0.772 | -0.003 |
+| small(11-25) | 79 | 0.797 | +0.007 |
+| medium(26-50) | 253 | 0.848 | +0.007 |
+| large(>50) | 235 | 0.793 | +0.027 |
+
+**Verdict: MINIMUM PASS (F1=0.818, needed >0.77; strong pass 0.82 not reached)**
+
+- Teacher distillation on the edge-graph model added +0.016 test F1 over v2
+- Val F1 (0.818) == test F1 (0.818): no overfitting
+- Biggest gain on large skeletons (>50 joints): +0.027 — the teacher helps most
+  where independent geometry is hardest
+- Still 0.002 below strong pass. Next: cheap probability-space ensemble (v2.2)
