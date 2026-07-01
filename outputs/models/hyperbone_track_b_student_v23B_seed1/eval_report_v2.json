@@ -1,0 +1,28 @@
+{
+  "track": "B_v2_edge_graph_student",
+  "verdict": "RESEARCH PASS",
+  "best_method": "student_only",
+  "best_f1": 0.8520862515183464,
+  "summary": {
+    "distance_only": {
+      "f1": 0.628196154347095,
+      "precision": 0.6261917707847381,
+      "recall": 0.6308561154650234
+    },
+    "density": {
+      "f1": 0.5769127102527262,
+      "precision": 0.5751311074857363,
+      "recall": 0.5792510970820601
+    },
+    "student_only": {
+      "f1": 0.8520862515183464,
+      "precision": 0.8499316227451462,
+      "recall": 0.854876115547252
+    },
+    "student_dist_hybrid": {
+      "f1": 0.8384520208399721,
+      "precision": 0.8362356721559918,
+      "recall": 0.8413715001567058
+    }
+  }
+}

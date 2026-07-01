@@ -109,18 +109,49 @@ def decode_topology(sample, edge_scores, method, dist_weight):
 def main():
     parser = argparse.ArgumentParser(
         description="Track B v2: Edge-graph student topology eval")
-    parser.add_argument("--test-cache", required=True)
-    parser.add_argument("--ckpt", required=True)
+    parser.add_argument("--config", default=None,
+                        help="Frozen config JSON; fills ckpt/caches/model dims. "
+                             "Explicit flags override.")
+    parser.add_argument("--split", default="test",
+                        choices=["train", "val", "test"],
+                        help="Which split's cache to eval when using --config")
+    parser.add_argument("--test-cache", default=None)
+    parser.add_argument("--ckpt", default=None)
     parser.add_argument("--dist-weight", type=float, default=10.0)
-    parser.add_argument("--edge-dim", type=int, default=128)
-    parser.add_argument("--n-mp-rounds", type=int, default=3)
+    parser.add_argument("--edge-dim", type=int, default=None)
+    parser.add_argument("--n-mp-rounds", type=int, default=None)
     parser.add_argument("--out", default=None)
     args = parser.parse_args()
+
+    # Resolve config-driven defaults (explicit flags win).
+    cfg = None
+    if args.config:
+        with open(args.config) as f:
+            cfg = json.load(f)
+        base = Path(args.config).resolve().parents[2]  # repo root from configs/topology/x.json
+        if args.ckpt is None:
+            args.ckpt = str(base / cfg["model"]["checkpoint"])
+        if args.test_cache is None:
+            args.test_cache = str(base / cfg["data"][f"{args.split}_cache"])
+        if args.edge_dim is None:
+            args.edge_dim = cfg["model"]["edge_dim"]
+        if args.n_mp_rounds is None:
+            args.n_mp_rounds = cfg["model"]["n_mp_rounds"]
+
+    # Fall back to architecture defaults if still unset.
+    if args.edge_dim is None:
+        args.edge_dim = 128
+    if args.n_mp_rounds is None:
+        args.n_mp_rounds = 3
+    if args.ckpt is None or args.test_cache is None:
+        parser.error("must provide --config, or both --ckpt and --test-cache")
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print("Track B v2: Topology Evaluation", flush=True)
     print("NO skinning in student input.", flush=True)
     print(f"Device: {device}", flush=True)
+    if cfg is not None:
+        print(f"Config: {args.config}  split={args.split}", flush=True)
 
     model = GeometryEdgeGraphStudent(
         patch_in_channels=6, patch_out_dim=64, geom_feat_dim=16,

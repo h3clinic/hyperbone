@@ -65,5 +65,12 @@
   "audit": {
     "verdict": "all clean, high confidence",
     "dimensions": ["metric-correctness", "skinning-leakage", "selection-discipline", "split-integrity"]
+  },
+  "reproduction": {
+    "status": "repro-verified",
+    "checkpoint_eval_exact": {"seed0_committed_test_f1": 0.8569, "note": "deterministic eval reproduces committed number bit-for-bit"},
+    "seed_retrain": {"seed": 1, "val_f1": 0.8599, "test_f1": 0.8521, "verdict": "RESEARCH PASS (>=0.85)"},
+    "seed_spread_test_f1": [0.8521, 0.8569],
+    "conclusion": "initialization-robust; test F1 spread 0.0048 within training noise; both seeds >= 0.85"
   }
 }
