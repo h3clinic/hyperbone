@@ -437,3 +437,37 @@ Degree-bucketed F1 (student_only):
 - Biggest gain on large skeletons (>50 joints): +0.027 — the teacher helps most
   where independent geometry is hardest
 - Still 0.002 below strong pass. Next: cheap probability-space ensemble (v2.2)
+
+---
+
+## Track B v2.2: Score Ensemble of v2 + v2.1 (2026-06-29)
+
+Cheapest shot at strong pass. Ensemble per-edge logits:
+`ensemble = alpha * logits_v2 + (1-alpha) * logits_v21`, decode student_only
+MST. Alpha swept 0.0..1.0 (step 0.05) on VALIDATION only, then test once at
+the selected alpha.
+
+### Files
+
+- Eval: `scripts/eval_edge_graph_ensemble.py`
+
+### Result (2026-06-29): did NOT reach strong pass
+
+| Quantity | Value |
+|----------|-------|
+| Best alpha (val-selected) | 0.40 |
+| Val F1 @ best alpha | 0.8202 |
+| **Test F1 @ best alpha** | **0.8198** |
+| Ensemble delta vs best single model | +0.0020 |
+| test precision / recall | 0.818 / 0.822 |
+| test cycles / components | 0.0 / 1.0 |
+
+Harness self-check: endpoint alphas reproduce committed per-model test F1s
+(alpha=1.0 → 0.8024 ≈ v2; alpha=0.0 → 0.8178 ≈ v2.1).
+
+**Verdict: MINIMUM PASS (test F1=0.8198). Strong pass (0.820) NOT reached — 0.0002 short.**
+
+- Val crossed 0.820 (0.8202) but TEST — the criterion that counts — did not
+- Only +0.002 over pure v2.1: v2 and v2.1 are too correlated (v2.1 warm-started
+  from v2) for ensembling to add much
+- Honest call: this is not a strong pass. Proceed to v2.3 (from-scratch teacher)
