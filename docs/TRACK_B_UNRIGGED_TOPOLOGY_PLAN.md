@@ -471,3 +471,78 @@ Harness self-check: endpoint alphas reproduce committed per-model test F1s
 - Only +0.002 over pure v2.1: v2 and v2.1 are too correlated (v2.1 warm-started
   from v2) for ensembling to add much
 - Honest call: this is not a strong pass. Proceed to v2.3 (from-scratch teacher)
+
+---
+
+## Track B v2.3: From-Scratch Teacher Distillation (2026-06-29) — RESEARCH PASS
+
+The v2.1 insight, pushed: teacher distillation works on the edge-graph model,
+but warm-starting from v2 anchored it in v2's weaker basin. v2.3 trains the SAME
+architecture and losses from RANDOM init, with teacher losses active from epoch 1,
+higher lr (3e-3), longer schedule (100ep cap), early stopping (patience 20).
+
+### Files
+
+- Trainer: `scripts/train_edge_graph_student_v23.py`
+- Test eval: `scripts/eval_edge_graph_student_topology.py`
+- Error analysis: `scripts/analyze_edge_graph_errors.py`
+- N-way ensemble (built, unused — v2.3B passed outright): `scripts/eval_edge_graph_ensemble_nway.py`
+- Frozen config: `configs/topology/hyperbone_track_b_v23_research.json`
+- Report: `outputs/models/hyperbone_track_b_student_v23B/report.md`
+
+### Variant sweep (selected by VAL topology F1 only)
+
+| Variant | rank / teacher_bce / distill | Val F1 | Epoch |
+|---------|------------------------------|--------|-------|
+| A | 2.0 / 0.5 / 0.25 | 0.8531 | 93 |
+| **B (selected)** | **2.0 / 1.0 / 0.25** | **0.8637** | 85 |
+| C | 3.0 / 0.5 / 0.5 | 0.8409 | 86 |
+
+Higher teacher-BCE weight (1.0) won. Only variant B was tested (test-once).
+
+### v2.3B Result (2026-06-29): RESEARCH PASS
+
+| Method | Test F1 |
+|--------|---------|
+| distance_only | 0.628 |
+| density | 0.577 |
+| student_dist_hybrid | 0.842 |
+| **student_only** | **0.8569** |
+
+Degree-bucketed test F1 (student_only), by joint count:
+
+| Bucket | N | F1 | vs v2.1 |
+|--------|---|------|------|
+| tiny(<=10) | 5 | 0.772 | 0.000 |
+| small(11-25) | 79 | 0.818 | +0.021 |
+| medium(26-50) | 253 | 0.876 | +0.028 |
+| large(>50) | 235 | 0.851 | +0.058 |
+
+By GT max-degree: deg≤3 0.751 (n=19), deg4-5 0.888 (n=313), deg6-8 0.845 (n=214),
+deg≥9 0.659 (n=26). High-degree hubs remain the hardest.
+
+**Verdict: RESEARCH PASS (test F1=0.8569 ≥ 0.85). Also clears strong pass (0.82).**
+
+- Val 0.8637 → test 0.8569: normal ~0.007 generalization gap (metric not inflated)
+- From-scratch teacher (+0.055 over v2) >> warm-start teacher v2.1 (+0.016 over v2):
+  the teacher signal is most valuable when it shapes training from epoch 1
+- Biggest win on the historically hardest bucket, large skeletons: +0.058 vs v2.1
+- Residual errors: high-degree hubs and long true edges (FN skew long 0.364 vs
+  FP short 0.208) → next architecture is joint-node ⨯ edge-node bipartite graph
+
+### Claim audit (4 independent read-only auditors, all CLEAN / high confidence)
+
+1. **Metric correctness**: trainer val-F1 == committed test-eval student_only F1
+   (identical scoring, MST tie-break, edge_prf, averaging). No inflation.
+2. **Skinning leakage**: no skinning field reaches student input; teacher labels
+   used only in loss, never passed to `model()`.
+3. **Selection discipline**: all selection on val; test evaluated once; reference
+   test numbers not used to select.
+4. **Split integrity**: SHA256-deterministic asset split, 0 overlaps across
+   train(4464)/val(562)/test(572).
+
+### Bottom line
+
+Track B (unrigged, geometry-only topology) reached a research pass: **test F1 =
+0.8569**, geometry-only, no skinning at inference. Track A (rigged, v4.1 F1=0.888)
+remains a separate, skinning-based result — the two are not to be conflated.

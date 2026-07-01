@@ -1,0 +1,52 @@
+{
+  "track": "B_unrigged_geometry_only_topology",
+  "version": "v2.3B",
+  "status": "RESEARCH_PASS",
+  "date": "2026-06-29",
+  "claim_boundary": "Geometry-only student; NO skinning at inference; skinning used only as v4.1 teacher target. Distinct from rigged Track A (v4.1 F1=0.888).",
+  "selection": "variant + checkpoint selected by VAL topology F1; TEST evaluated once",
+  "test": {
+    "student_only_f1": 0.8569,
+    "student_only_precision": 0.8548,
+    "student_only_recall": 0.8596,
+    "student_dist_hybrid_f1": 0.8420,
+    "distance_only_f1": 0.6282,
+    "density_f1": 0.5769,
+    "cycles": 0.0,
+    "components": 1.0
+  },
+  "val": {"student_only_f1": 0.8637, "best_epoch": 85},
+  "degree_buckets_joint_count": {
+    "tiny(<=10)": {"n": 5, "f1": 0.7722},
+    "small(11-25)": {"n": 79, "f1": 0.8178},
+    "medium(26-50)": {"n": 253, "f1": 0.8764},
+    "large(>50)": {"n": 235, "f1": 0.8509}
+  },
+  "degree_buckets_gt_max_degree": {
+    "deg<=3": {"n": 19, "f1": 0.7505},
+    "deg4-5": {"n": 313, "f1": 0.8879},
+    "deg6-8": {"n": 214, "f1": 0.8451},
+    "deg>=9": {"n": 26, "f1": 0.6589}
+  },
+  "error_modes": {
+    "fp_mean_len_pct": 0.208,
+    "fn_mean_len_pct": 0.364,
+    "note": "misses long true edges; over-connects near neighbors; high-degree hubs hardest"
+  },
+  "progression": {
+    "distance_only": 0.628,
+    "v3_1_node_only": 0.756,
+    "v1_bce": 0.678,
+    "v1_1_warm_distill": 0.662,
+    "v2_edge_graph": 0.802,
+    "v2_1_warm_teacher": 0.818,
+    "v2_2_ensemble": 0.8198,
+    "v2_3B_scratch_teacher": 0.8569
+  },
+  "variants": {
+    "A": {"rank": 2.0, "teacher_bce": 0.5, "distill": 0.25, "val_f1": 0.8531, "epoch": 93},
+    "B": {"rank": 2.0, "teacher_bce": 1.0, "distill": 0.25, "val_f1": 0.8637, "epoch": 85, "selected": true},
+    "C": {"rank": 3.0, "teacher_bce": 0.5, "distill": 0.5, "val_f1": 0.8409, "epoch": 86}
+  },
+  "audit": {"metric_correctness": "clean", "skinning_leakage": "clean", "selection_discipline": "clean", "split_integrity": "clean", "confidence": "high"}
+}

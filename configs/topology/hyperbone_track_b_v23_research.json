@@ -1,0 +1,69 @@
+{
+  "name": "hyperbone_track_b_v23_research",
+  "track": "B_unrigged_geometry_only_topology",
+  "status": "RESEARCH_PASS",
+  "claim_boundary": "Geometry-only student. NO skinning at inference. Skinning (v4.1 teacher) used ONLY as a training target. This is the UNRIGGED topology result and must not be conflated with the rigged Track A result (v4.1 F1=0.888).",
+  "result": {
+    "test_topology_f1_student_only": 0.8569,
+    "val_topology_f1_student_only": 0.8637,
+    "decode": "student_only Kruskal MST (raw logits, tie-break by (score, -dist) desc, max_edges = n_active-1)",
+    "test_precision": 0.8548,
+    "test_recall": 0.8596,
+    "test_cycles": 0.0,
+    "test_components": 1.0,
+    "pass_thresholds": {"minimum": 0.77, "strong": 0.82, "research": 0.85}
+  },
+  "model": {
+    "class": "GeometryEdgeGraphStudent",
+    "module": "hyperbone/models/geometry_edge_graph_student.py",
+    "checkpoint": "outputs/models/hyperbone_track_b_student_v23B/best_student_v23.pt",
+    "params": 305092,
+    "patch_in_channels": 6,
+    "patch_out_dim": 64,
+    "geom_feat_dim": 16,
+    "edge_dim": 128,
+    "n_mp_rounds": 3,
+    "dropout_train": 0.1,
+    "dropout_infer": 0.0
+  },
+  "training": {
+    "script": "scripts/train_edge_graph_student_v23.py",
+    "from_scratch": true,
+    "init": "random (NOT warm-started; from-scratch beat warm-start v2.1)",
+    "lr": 0.003,
+    "scheduler": "cosine, 5-epoch warmup",
+    "epochs_cap": 100,
+    "early_stop_patience": 20,
+    "best_epoch": 85,
+    "accum_steps": 4,
+    "loss": "gt_bce(1.0) + rank(2.0, margin 1.0, hard_neg_k 16) + teacher_bce(1.0) + kl_score_distill(0.25, temp 2.0)",
+    "pos_weight": 6.75
+  },
+  "data": {
+    "train_cache": "outputs/models/hyperbone_track_b_student/cache_train_v11.pt",
+    "val_cache": "outputs/models/hyperbone_track_b_student/cache_val_v11.pt",
+    "test_cache": "outputs/models/hyperbone_track_b_student/cache_test_v11.pt",
+    "candidate_edges": "KNN on joint positions (candidate_k) UNION ground-truth edges",
+    "n_train": 4464, "n_val": 562, "n_test": 572,
+    "split": "SHA256-deterministic asset split, 0 overlaps (audited)"
+  },
+  "eval": {
+    "test_script": "scripts/eval_edge_graph_student_topology.py",
+    "error_analysis": "scripts/analyze_edge_graph_errors.py",
+    "selection": "checkpoint + variant selected by VAL topology F1 only; TEST evaluated once"
+  },
+  "baselines_for_context": {
+    "distance_only": 0.628,
+    "density": 0.577,
+    "v3_1_node_only": 0.756,
+    "v1_bce": 0.678,
+    "v1_1_warm_distill": 0.662,
+    "v2_edge_graph": 0.802,
+    "v2_1_warm_teacher": 0.818,
+    "v2_2_ensemble": 0.8198
+  },
+  "audit": {
+    "verdict": "all clean, high confidence",
+    "dimensions": ["metric-correctness", "skinning-leakage", "selection-discipline", "split-integrity"]
+  }
+}
