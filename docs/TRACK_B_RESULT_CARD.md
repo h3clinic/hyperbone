@@ -89,10 +89,24 @@ multi-limb rigs, spanning **8–94 joints**.
   torso (the hardest topology).
 - `overlays/character_gallery_grid.png` — 9 characters spanning the joint-count
   range, GT skeleton over mesh, to show dataset variety.
+- `overlays/character_montage_grid.png` — 24-character montage across the full
+  joint-count range (thin prop, radial ball-creature, quadrupeds, humanoids,
+  winged/tailed creatures, dense many-limb bodies).
 
-This diversity explains the residual error modes: high-degree hubs and dense
-creature torsos (many joints in a small volume) are where geometry-only scoring
-is most ambiguous.
+### Test-set composition (all 572 characters)
+
+We produce a skeleton for **every** test character. Structural make-up:
+
+- **Joint count:** 8–94 (median 44). tiny ≤10: 1% · small 11–25: 14% ·
+  medium 26–50: 44% · large >50: 41%.
+- **Limb tips (degree-1 leaves):** median 10, up to 40. ≤3 tips (simple/prop):
+  2% · 4–6 (biped-like): 27% · 7–10: 27% · **>10 (many-limb): 45%**.
+- **Max hub degree:** median 5, up to 21. ≥9 (heavy hub): 5%.
+
+So the domain is **mostly complex multi-limb creatures/assets, not simple
+bipeds** — which is exactly why high-degree hubs and dense creature torsos (many
+joints in a small volume) are where geometry-only scoring is most ambiguous and
+the residual errors concentrate.
 
 ---
 
