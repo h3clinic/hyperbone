@@ -1,0 +1,92 @@
+{
+  "rules": {
+    "validity_f1": 0.8097345132743363,
+    "corruption_macro_f1": 0.4788544646916695,
+    "per_class_f1": {
+      "valid": 0.7528735632183908,
+      "bone_length_scale_error": 0.06451612903225806,
+      "detached_child": 0.5714285714285714,
+      "wrong_parent_motion": 0.35294117647058826,
+      "temporal_jitter": 0.7692307692307693,
+      "impossible_large_rotation": 0.7529411764705882,
+      "swapped_limb_motion": 0.3620689655172414
+    },
+    "length_preserving_recall": {
+      "impossible_large_rotation": 0.64,
+      "swapped_limb_motion": 0.84
+    },
+    "thresholds": {
+      "len_hi": 0.15,
+      "mbld_hi": 0.12,
+      "len_wrongparent": 1.6,
+      "ang_wrongparent": 1.1,
+      "smooth_lo": 0.32638112127780916,
+      "cons_lo": 0.85,
+      "ang_hi": 2.527358331680298,
+      "sym_lo": 0.2,
+      "movefrac_swap": 0.06878220029175282,
+      "energy_swap": 0.43409597128629684
+    }
+  },
+  "mlp": {
+    "validity_f1": 0.975,
+    "corruption_macro_f1": 0.9494416731288292,
+    "per_class_f1": {
+      "valid": 0.975,
+      "bone_length_scale_error": 0.9803921568627451,
+      "detached_child": 0.9361702127659575,
+      "wrong_parent_motion": 0.96,
+      "temporal_jitter": 1.0,
+      "impossible_large_rotation": 0.98989898989899,
+      "swapped_limb_motion": 0.8301886792452831
+    },
+    "length_preserving_recall": {
+      "impossible_large_rotation": 0.98,
+      "swapped_limb_motion": 0.88
+    }
+  },
+  "random_forest": {
+    "validity_f1": 0.9949748743718593,
+    "corruption_macro_f1": 0.9949151377722806,
+    "per_class_f1": {
+      "valid": 0.9950248756218906,
+      "bone_length_scale_error": 1.0,
+      "detached_child": 1.0,
+      "wrong_parent_motion": 1.0,
+      "temporal_jitter": 1.0,
+      "impossible_large_rotation": 0.98989898989899,
+      "swapped_limb_motion": 0.9795918367346939
+    },
+    "length_preserving_recall": {
+      "impossible_large_rotation": 0.98,
+      "swapped_limb_motion": 0.96
+    }
+  },
+  "localization": {
+    "culprit_in_affected_acc": 0.645,
+    "n": 200
+  },
+  "gate": {
+    "best_learned_model": "random_forest",
+    "validity_f1_ge_0.90": true,
+    "corruption_macro_f1_ge_0.75": true,
+    "impossible_rotation_detected": true,
+    "swapped_limb_detected": true,
+    "PASS": true
+  },
+  "classes": [
+    "valid",
+    "bone_length_scale_error",
+    "detached_child",
+    "wrong_parent_motion",
+    "temporal_jitter",
+    "impossible_large_rotation",
+    "swapped_limb_motion"
+  ],
+  "split": {
+    "train_assets": 100,
+    "test_assets": 25,
+    "train_clips": 1600,
+    "test_clips": 400
+  }
+}

@@ -133,11 +133,42 @@ layer does not. All four rules-separability checks pass.
 
 ## Next milestones
 
-- **C3 — Motion plausibility scorer:** valid vs corrupted classifier on the C2
-  features. First real **Track C gate:** validity F1 ≥ 0.90, corruption_type
-  macro F1 ≥ 0.75, and it must catch the length-preserving implausibilities.
-  Compare rules-only vs learned. Immediately useful: scores whether a Track B
-  skeleton is *motion-ready*, not just geometrically right.
+---
+
+## Track C3 — Motion plausibility classifier (IMPLEMENTED 2026-07-02) — GATE PASS
+
+Classifies clips valid / one-of-6-corruptions on the C2 features. **Asset-level
+split** (25 held-out assets, no clip leakage).
+
+### Files
+- `scripts/train_motion_plausibility.py` → `plausibility_report.json`
+
+### Result (held-out assets)
+
+| Model | validity F1 | corruption macro F1 | impossible recall | swapped recall |
+|-------|:---:|:---:|:---:|:---:|
+| rules-only | 0.810 | 0.479 | 0.64 | 0.84 |
+| MLP | 0.975 | 0.949 | 0.98 | 0.88 |
+| **RandomForest** | **0.995** | **0.995** | **0.98** | **0.96** |
+
+Gate (best learned = RandomForest): validity F1 ≥ 0.90 ✓ · corruption macro F1 ≥
+0.75 ✓ · impossible_large_rotation detected ✓ · swapped_limb_motion detected ✓ →
+**PASS**. Localization (culprit joint in affected set) = 0.645 — a first signal,
+improvable.
+
+### What it establishes
+- The C2 features carry the signal: a learned model roughly **doubles** rules-only
+  corruption macro-F1 (0.48 → 0.99).
+- It catches the **length-preserving** bad motion (impossible rotations, swapped
+  limbs) a bone-length checker cannot — the core scientific test.
+- Immediately useful as a **motion-readiness scorer** for Track B skeletons.
+
+Caveat: near-perfect numbers reflect that these are *synthetic* corruptions with
+clean feature signatures (the features were designed to separate them). The
+honest value is the validated feature layer + the rules-vs-learned gap + length-
+preserving detection. Real bad-motion / mocap evaluation is future work (C4+).
+A raw-sequence temporal model (1D CNN / graph-temporal) is unnecessary here since
+the feature model already passes; revisit it when real motion arrives.
 - **C4/C5 — Real mocap (CMU/Mixamo/AMASS) + retargeting** onto Anymate skeletons.
 - **D — Rendered video → structure + motion** (only after joint-motion works).
 - **E — Universal scene structure** (the taxonomy above).
