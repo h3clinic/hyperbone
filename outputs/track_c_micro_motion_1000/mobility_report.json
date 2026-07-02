@@ -1,0 +1,138 @@
+{
+  "n_clips": 2000,
+  "n_valid": 1000,
+  "n_invalid": 1000,
+  "feature_names": [
+    "bone_length_deviation",
+    "mean_bone_length_deviation",
+    "max_joint_angle_range",
+    "mean_joint_angle_range",
+    "max_angular_velocity",
+    "max_angular_acceleration",
+    "parent_child_consistency",
+    "motion_symmetry",
+    "temporal_smoothness",
+    "motion_energy",
+    "moving_joint_fraction"
+  ],
+  "classes": [
+    "valid",
+    "bone_length_scale_error",
+    "detached_child",
+    "wrong_parent_motion",
+    "temporal_jitter",
+    "impossible_large_rotation",
+    "swapped_limb_motion"
+  ],
+  "mobility_type_counts": {
+    "fixed": 52869,
+    "hinge": 8615,
+    "ball": 3589,
+    "flexible_chain": 25887,
+    "root": 2192
+  },
+  "motion_role_counts": {
+    "rigid_bone": 60455,
+    "flexible_branch": 17037,
+    "soft_field_proxy": 13468
+  },
+  "mean_feature_by_class": {
+    "valid": {
+      "bone_length_deviation": 3.3749283829820342e-06,
+      "mean_bone_length_deviation": 2.7676500735651643e-07,
+      "max_joint_angle_range": 0.6088073253631592,
+      "mean_joint_angle_range": 0.15579922497272491,
+      "max_angular_velocity": 3.2570559978485107,
+      "max_angular_acceleration": 61.59500503540039,
+      "parent_child_consistency": 0.9999999403953552,
+      "motion_symmetry": 0.35205504298210144,
+      "temporal_smoothness": 0.941034734249115,
+      "motion_energy": 8.107600212097168,
+      "moving_joint_fraction": 0.4621512293815613
+    },
+    "bone_length_scale_error": {
+      "bone_length_deviation": 1.0273150205612183,
+      "mean_bone_length_deviation": 0.20227095484733582,
+      "max_joint_angle_range": 0.5054377913475037,
+      "mean_joint_angle_range": 0.04019276052713394,
+      "max_angular_velocity": 2.5732405185699463,
+      "max_angular_acceleration": 60.62067794799805,
+      "parent_child_consistency": 0.7997827529907227,
+      "motion_symmetry": 0.015482349321246147,
+      "temporal_smoothness": 0.988760769367218,
+      "motion_energy": 11.868581771850586,
+      "moving_joint_fraction": 0.0856977179646492
+    },
+    "detached_child": {
+      "bone_length_deviation": 1.1054105758666992,
+      "mean_bone_length_deviation": 0.03387501835823059,
+      "max_joint_angle_range": 0.8578604459762573,
+      "mean_joint_angle_range": 0.07411562651395798,
+      "max_angular_velocity": 2.2095556259155273,
+      "max_angular_acceleration": 45.10906982421875,
+      "parent_child_consistency": 0.9837810397148132,
+      "motion_symmetry": 0.07908482104539871,
+      "temporal_smoothness": 0.9953361749649048,
+      "motion_energy": 3.9533708095550537,
+      "moving_joint_fraction": 0.16550882160663605
+    },
+    "wrong_parent_motion": {
+      "bone_length_deviation": 2.320878028869629,
+      "mean_bone_length_deviation": 0.05500037968158722,
+      "max_joint_angle_range": 1.400444507598877,
+      "mean_joint_angle_range": 0.1102120503783226,
+      "max_angular_velocity": 14.744324684143066,
+      "max_angular_acceleration": 228.94970703125,
+      "parent_child_consistency": 0.9800541400909424,
+      "motion_symmetry": 0.07193084061145782,
+      "temporal_smoothness": 0.992974042892456,
+      "motion_energy": 5.2946248054504395,
+      "moving_joint_fraction": 0.19774940609931946
+    },
+    "temporal_jitter": {
+      "bone_length_deviation": 3.9164419174194336,
+      "mean_bone_length_deviation": 0.7233247756958008,
+      "max_joint_angle_range": 2.7451133728027344,
+      "mean_joint_angle_range": 1.0417280197143555,
+      "max_angular_velocity": 44.924232482910156,
+      "max_angular_acceleration": 840.01904296875,
+      "parent_child_consistency": 0.44117453694343567,
+      "motion_symmetry": 0.06935755908489227,
+      "temporal_smoothness": 0.5183864235877991,
+      "motion_energy": 24.59416389465332,
+      "moving_joint_fraction": 0.9675150513648987
+    },
+    "impossible_large_rotation": {
+      "bone_length_deviation": 1.6488788787683006e-06,
+      "mean_bone_length_deviation": 1.1077629835654079e-07,
+      "max_joint_angle_range": 2.498298168182373,
+      "mean_joint_angle_range": 0.39814573526382446,
+      "max_angular_velocity": 16.303442001342773,
+      "max_angular_acceleration": 375.9754638671875,
+      "parent_child_consistency": 1.0,
+      "motion_symmetry": 0.07577947527170181,
+      "temporal_smoothness": 0.9081228375434875,
+      "motion_energy": 21.453197479248047,
+      "moving_joint_fraction": 0.18609683215618134
+    },
+    "swapped_limb_motion": {
+      "bone_length_deviation": 0.009176339022815228,
+      "mean_bone_length_deviation": 0.0008460476528853178,
+      "max_joint_angle_range": 0.48834308981895447,
+      "mean_joint_angle_range": 0.08289869874715805,
+      "max_angular_velocity": 3.108403205871582,
+      "max_angular_acceleration": 70.81398010253906,
+      "parent_child_consistency": 0.9991539716720581,
+      "motion_symmetry": 0.08799988031387329,
+      "temporal_smoothness": 0.996580183506012,
+      "motion_energy": 2.544403553009033,
+      "moving_joint_fraction": 0.2014380544424057
+    }
+  },
+  "rules_separability_checks": {
+    "impossible_large_rotation: max_joint_angle_range >> valid": true,
+    "swapped_limb_motion: motion_symmetry < valid": true,
+    "temporal_jitter: temporal_smoothness < valid": true,
+    "length corruptions: bone_length_deviation >> valid": true
+  }
+}

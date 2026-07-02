@@ -445,15 +445,24 @@ def save_clip(out_dir, rec):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--source", required=True)
+    ap.add_argument("--source", default=None)
+    ap.add_argument("--pt", default=None, help="alias for --source")
     ap.add_argument("--split", required=True)
     ap.add_argument("--num-assets", type=int, default=100)
+    ap.add_argument("--valid-per-asset", type=int, default=len(VALID_PRESETS))
+    ap.add_argument("--corrupt-per-asset", type=int, default=len(CORRUPTIONS))
     ap.add_argument("--fps", type=int, default=24)
     ap.add_argument("--seconds", type=float, default=3.0)
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--smoke", action="store_true")
     ap.add_argument("--out", required=True)
     args = ap.parse_args()
+
+    args.source = args.source or args.pt
+    if not args.source:
+        ap.error("provide --source (or --pt)")
+    valid_presets = VALID_PRESETS[:max(1, min(args.valid_per_asset, len(VALID_PRESETS)))]
+    corruptions = CORRUPTIONS[:max(1, min(args.corrupt_per_asset, len(CORRUPTIONS)))]
 
     if args.smoke:
         args.num_assets = min(args.num_assets, 20)
@@ -494,7 +503,7 @@ def main():
                     joint_count=J, mesh_vertex_count=int(sl.get("mesh_verts", 0)),
                     fps=args.fps, num_frames=T)
 
-        for preset in VALID_PRESETS:
+        for preset in valid_presets:
             rv, rt, moving, amp, freq = preset_rotvec(sk, preset, T, args.fps, rng)
             world = fk(sk, rv, rt)
             bl = bone_length_series(sk, world)  # [T,E]
@@ -510,7 +519,7 @@ def main():
             index.append(dict(clip_id=rec["clip_id"], preset=preset, valid=True,
                               asset_idx=cache_idx, joints=J, max_bone_dev=dev))
 
-        for ci, (ctype, params) in enumerate(CORRUPTIONS):
+        for ci, (ctype, params) in enumerate(corruptions):
             world, rv, moving, amp, freq = make_corruption(sk, ctype, params, T, args.fps, rng)
             bl = bone_length_series(sk, world)
             dev = float(np.abs(bl - rest_len[None]).max()) if bl.size else 0.0
@@ -532,8 +541,8 @@ def main():
     summary = dict(
         n_assets=len(pick), n_valid=n_valid, n_corrupt=n_corrupt,
         fps=args.fps, num_frames=T, seconds=args.seconds,
-        valid_presets=VALID_PRESETS,
-        corruption_types=sorted(set(c for c, _ in CORRUPTIONS)),
+        valid_presets=valid_presets,
+        corruption_types=sorted(set(c for c, _ in corruptions)),
         max_bone_length_deviation_valid=max_len_dev_valid,
         bone_length_preserved_valid=bool(max_len_dev_valid < 1e-4),
     )

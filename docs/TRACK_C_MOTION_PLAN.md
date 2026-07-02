@@ -88,15 +88,56 @@ length check.
 
 ---
 
+---
+
+## Track C2 — Mobility / motion-readiness feature layer (IMPLEMENTED 2026-07-02)
+
+Interpretable annotation of *why* a motion is (im)plausible, feeding C3.
+
+### Files
+- Extractor: `hyperbone/motion/mobility.py`
+- Batch annotate: `scripts/annotate_micro_motion.py` → `features.npz` + `mobility_report.json`
+- Dataset: `outputs/track_c_micro_motion_1000/` (1000 valid + 1000 invalid, 125 assets)
+
+### What it computes (pure geometry, no net)
+- **per-joint `mobility_type`:** fixed | hinge | ball | flexible_chain | root
+  (from observed bone swing + rotation-axis DOF + chain membership)
+- **per-edge `motion_role`:** rigid_bone | flexible_branch | soft_field_proxy
+  (soft = bone length not preserved → deformation, a hook for the Track E taxonomy)
+- **per-clip features:** bone_length_deviation, mean_bone_length_deviation,
+  max/mean joint_angle_range, max angular velocity/acceleration,
+  parent_child_consistency, motion_symmetry, temporal_smoothness, motion_energy,
+  moving_joint_fraction. Plus localization (max-length-dev edge, max-angle joint).
+
+### Separability (mean feature by class, 1000/1000 set)
+
+| class | bone_len_dev | max_angle_range | motion_symmetry | temporal_smoothness |
+|-------|:---:|:---:|:---:|:---:|
+| valid | 0.000 | 0.61 | 0.35 | 0.94 |
+| bone_length_scale_error | 1.03 | – | – | – |
+| temporal_jitter | 3.92 | 2.75 | – | 0.52 |
+| **impossible_large_rotation** | **0.00** | **2.50** | – | – |
+| **swapped_limb_motion** | **0.01** | – | **0.09** | – |
+
+**The scientific point holds:** the two length-preserving corruptions
+(`impossible_large_rotation`, `swapped_limb_motion`) have bone_length_deviation
+indistinguishable from valid, yet are separated by **angle range** and
+**symmetry** respectively. A bone-length checker would miss both; the mobility
+layer does not. All four rules-separability checks pass.
+
+### Scaled dataset
+`--pt/--valid-per-asset/--corrupt-per-asset` added to the generator; 125 assets →
+**1000 valid + 1000 invalid**, valid bone-length deviation 5.3e-15.
+
+---
+
 ## Next milestones
 
-- **C2 — Joint mobility model:** predict which joints move, axis, range,
-  plausibility, from `skeleton graph + rest geometry + short joint sequence`.
-- **C3 — Motion plausibility scorer:** valid vs corrupted classifier. First real
-  **Track C gate:** 1000 valid + 1000 invalid clips, verify bone-length
-  consistency, train a simple plausible-vs-broken classifier. Immediately useful:
-  it can score whether a Track B skeleton is *motion-ready*, not just
-  geometrically right.
+- **C3 — Motion plausibility scorer:** valid vs corrupted classifier on the C2
+  features. First real **Track C gate:** validity F1 ≥ 0.90, corruption_type
+  macro F1 ≥ 0.75, and it must catch the length-preserving implausibilities.
+  Compare rules-only vs learned. Immediately useful: scores whether a Track B
+  skeleton is *motion-ready*, not just geometrically right.
 - **C4/C5 — Real mocap (CMU/Mixamo/AMASS) + retargeting** onto Anymate skeletons.
 - **D — Rendered video → structure + motion** (only after joint-motion works).
 - **E — Universal scene structure** (the taxonomy above).
