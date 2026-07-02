@@ -1,0 +1,28 @@
+{
+  "n_assets": 20,
+  "n_valid": 160,
+  "n_corrupt": 160,
+  "fps": 24,
+  "num_frames": 72,
+  "seconds": 3.0,
+  "valid_presets": [
+    "single_joint_bend",
+    "limb_swing",
+    "spine_bend",
+    "tail_sway",
+    "wing_flap",
+    "root_sway",
+    "generic_breathing",
+    "tremor_micro_jitter"
+  ],
+  "corruption_types": [
+    "bone_length_scale_error",
+    "detached_child",
+    "impossible_large_rotation",
+    "swapped_limb_motion",
+    "temporal_jitter",
+    "wrong_parent_motion"
+  ],
+  "max_bone_length_deviation_valid": 4.440892098500626e-16,
+  "bone_length_preserved_valid": true
+}
