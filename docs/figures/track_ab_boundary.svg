@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="960" height="560" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#1a1a1a">HyperBone — Track A vs Track B (known-node topology recovery)</text>
+  <text x="480" y="58" text-anchor="middle" font-size="13" fill="#555">Both tracks assume joint positions are GIVEN (known nodes). Neither discovers nodes. The boundary is skinning-at-inference.</text>
+
+  <!-- ================= TRACK A ================= -->
+  <rect x="40" y="86" width="410" height="392" rx="12" fill="#eef4fb" stroke="#3b78c3" stroke-width="2"/>
+  <text x="245" y="114" text-anchor="middle" font-size="18" font-weight="700" fill="#1f4e85">Track A — Rigged / skinned</text>
+
+  <text x="245" y="140" text-anchor="middle" font-size="12" font-weight="700" fill="#333">INPUTS AT INFERENCE</text>
+  <rect x="70" y="150" width="350" height="26" rx="6" fill="#ffffff" stroke="#9bb8dd"/>
+  <text x="245" y="168" text-anchor="middle" font-size="13" fill="#333">mesh geometry</text>
+  <rect x="70" y="182" width="350" height="26" rx="6" fill="#ffffff" stroke="#9bb8dd"/>
+  <text x="245" y="200" text-anchor="middle" font-size="13" fill="#333">known joint positions</text>
+  <rect x="70" y="214" width="350" height="26" rx="6" fill="#fde8e8" stroke="#d9534f" stroke-width="2"/>
+  <text x="245" y="232" text-anchor="middle" font-size="13" font-weight="700" fill="#b02a26">skinning weights &#9668; the extra input</text>
+
+  <line x1="245" y1="248" x2="245" y2="278" stroke="#3b78c3" stroke-width="2" marker-end="url(#arrowA)"/>
+  <rect x="86" y="282" width="318" height="52" rx="8" fill="#ffffff" stroke="#3b78c3" stroke-width="1.5"/>
+  <text x="245" y="304" text-anchor="middle" font-size="13" font-weight="700" fill="#1f4e85">skinning-aware topology model</text>
+  <text x="245" y="322" text-anchor="middle" font-size="12" fill="#555">v4.1</text>
+
+  <line x1="245" y1="334" x2="245" y2="360" stroke="#3b78c3" stroke-width="2" marker-end="url(#arrowA)"/>
+  <rect x="126" y="364" width="238" height="46" rx="8" fill="#1f4e85"/>
+  <text x="245" y="392" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">test F1 = 0.888</text>
+
+  <text x="245" y="440" text-anchor="middle" font-size="13" font-weight="700" fill="#b02a26">USES skinning at inference</text>
+  <text x="245" y="460" text-anchor="middle" font-size="11" fill="#777">not applicable to unrigged meshes / video</text>
+
+  <!-- ================= TRACK B ================= -->
+  <rect x="510" y="86" width="410" height="392" rx="12" fill="#eef8f0" stroke="#2e9e5b" stroke-width="2"/>
+  <text x="715" y="114" text-anchor="middle" font-size="18" font-weight="700" fill="#1d7a41">Track B — Geometry-only</text>
+
+  <text x="715" y="140" text-anchor="middle" font-size="12" font-weight="700" fill="#333">INPUTS AT INFERENCE</text>
+  <rect x="540" y="150" width="350" height="26" rx="6" fill="#ffffff" stroke="#9dcfb0"/>
+  <text x="715" y="168" text-anchor="middle" font-size="13" fill="#333">mesh geometry (point-cloud patches + normals)</text>
+  <rect x="540" y="182" width="350" height="26" rx="6" fill="#ffffff" stroke="#9dcfb0"/>
+  <text x="715" y="200" text-anchor="middle" font-size="13" fill="#333">known joint positions</text>
+  <rect x="540" y="214" width="350" height="26" rx="6" fill="#f4f4f4" stroke="#bbbbbb" stroke-dasharray="5 4"/>
+  <text x="715" y="232" text-anchor="middle" font-size="13" fill="#999"><tspan text-decoration="line-through">skinning weights</tspan> &#8212; NOT used</text>
+
+  <line x1="715" y1="248" x2="715" y2="278" stroke="#2e9e5b" stroke-width="2" marker-end="url(#arrowB)"/>
+  <rect x="556" y="282" width="318" height="52" rx="8" fill="#ffffff" stroke="#2e9e5b" stroke-width="1.5"/>
+  <text x="715" y="304" text-anchor="middle" font-size="13" font-weight="700" fill="#1d7a41">edge-graph message-passing student</text>
+  <text x="715" y="322" text-anchor="middle" font-size="12" fill="#555">v2.3B &#183; from-scratch teacher distillation</text>
+
+  <line x1="715" y1="334" x2="715" y2="360" stroke="#2e9e5b" stroke-width="2" marker-end="url(#arrowB)"/>
+  <rect x="596" y="364" width="238" height="46" rx="8" fill="#1d7a41"/>
+  <text x="715" y="387" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">test F1 = 0.857</text>
+  <text x="715" y="403" text-anchor="middle" font-size="10" fill="#d4f0dd">repro-verified across seeds (0.852 / 0.857)</text>
+
+  <text x="715" y="440" text-anchor="middle" font-size="13" font-weight="700" fill="#1d7a41">NO skinning at inference</text>
+  <text x="715" y="460" text-anchor="middle" font-size="11" fill="#777">applies to unrigged mesh geometry</text>
+
+  <!-- teacher arrow A -> B (training-time only) -->
+  <path d="M 245 415 C 245 500, 715 500, 715 415" fill="none" stroke="#b58900" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#arrowT)"/>
+  <rect x="356" y="486" width="248" height="30" rx="6" fill="#fff8e6" stroke="#b58900"/>
+  <text x="480" y="506" text-anchor="middle" font-size="11.5" font-weight="700" fill="#8a6d00">training-time teacher signal only</text>
+
+  <defs>
+    <marker id="arrowA" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L6,3 L0,6 z" fill="#3b78c3"/>
+    </marker>
+    <marker id="arrowB" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L6,3 L0,6 z" fill="#2e9e5b"/>
+    </marker>
+    <marker id="arrowT" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L6,3 L0,6 z" fill="#b58900"/>
+    </marker>
+  </defs>
+</svg>
