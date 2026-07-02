@@ -92,6 +92,11 @@ multi-limb rigs, spanning **8–94 joints**.
 - `overlays/character_montage_grid.png` — 24-character montage across the full
   joint-count range (thin prop, radial ball-creature, quadrupeds, humanoids,
   winged/tailed creatures, dense many-limb bodies).
+- `overlays/character_mesh_grid.png` / `character_mesh_hipoly_grid.png` — the
+  actual **solid triangle mesh** (from `mesh_face`) rendered translucent with the
+  skeleton inside (`scripts/render_character_mesh.py`). The high-poly set (up to
+  63k verts) shows detailed characters: elongated quadrupeds, a standing
+  humanoid, and multi-limb creatures, with the recovered skeleton overlaid.
 
 ### Test-set composition (all 572 characters)
 
