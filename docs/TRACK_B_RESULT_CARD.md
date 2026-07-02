@@ -75,6 +75,25 @@ edge, red dashed = missed GT edge, orange = extra predicted edge, dots = known j
 
 Grid: `overlays/overlays_grid.png`.
 
+### Character context (mesh + skeleton)
+
+To characterize *what* these skeletons belong to, the source Anymate meshes are
+overlaid under the skeleton (`scripts/render_character_overlays.py`, mapped
+cache→source by exact joint match). The domain is **diverse rigged 3D assets**,
+not only humanoids: bipeds, quadrupeds, winged/spread creatures, thin props, and
+multi-limb rigs, spanning **8–94 joints**.
+
+- `overlays/character_cases_grid.png` — the four result cases over their meshes:
+  the perfect case (idx 20) is a clean **humanoid biped**; the large-skeleton
+  failure (idx 513) is a **dense animal body** where many joints pack into a
+  torso (the hardest topology).
+- `overlays/character_gallery_grid.png` — 9 characters spanning the joint-count
+  range, GT skeleton over mesh, to show dataset variety.
+
+This diversity explains the residual error modes: high-degree hubs and dense
+creature torsos (many joints in a small volume) are where geometry-only scoring
+is most ambiguous.
+
 ---
 
 ## 3. Ablation narrative
